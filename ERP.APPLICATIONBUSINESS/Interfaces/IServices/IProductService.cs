@@ -15,7 +15,7 @@ namespace ERP.APPLICATIONBUSINESS.Interfaces.IServices
 
         Task<ProductDto> GetById(int id);
 
-        Task Add(CreateProductDto dto);
+        Task Add(CreateProductDto dto, CancellationToken cancellationToken = default);
 
         Task Update(UpdateProductDto dto);
 

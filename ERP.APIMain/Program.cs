@@ -1,5 +1,6 @@
 using ERP.APIMain.Authorization;
 using ERP.APIMain.Middlewares;
+using ERP.APPLICATION.Interfaces.IRepository;
 using ERP.APPLICATIONBUSINESS.Interfaces;
 using ERP.APPLICATIONBUSINESS.Interfaces.IRepositories;
 using ERP.APPLICATIONBUSINESS.Interfaces.IRepository;
@@ -58,7 +59,9 @@ builder.Services
 
 // Repository Registration
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+builder.Services.AddHttpContextAccessor();
 
+builder.Services.AddScoped<IAuditLogContext, AuditLogContext>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
@@ -74,8 +77,6 @@ builder.Services.AddScoped<ILeaveRequestRepository, LeaveRequestRepository>();
 
 builder.Services.AddScoped<IAttendanceRepository, AttendanceRepository>();
 builder.Services.AddScoped<IPurchaseOrderRepository, PurchaseOrderRepository>();
-
-
 
 
 
@@ -103,6 +104,7 @@ builder.Services.AddScoped<IGoodsReceiptRepository, GoodsReceiptRepository>();
 
 
 builder.Services.AddScoped< ISettingsRepository, SettingsRepository>();
+builder.Services.AddScoped<IReportRepository, ReportRepository>();
 
 
 
@@ -143,6 +145,7 @@ builder.Services.AddScoped<ISupplierService, SupplierService>();
 builder.Services.AddScoped<IPurchaseOrderService, PurchaseOrderService>();
 builder.Services.AddScoped<IGoodsReceiptService, GoodsReceiptService>();
 builder.Services.AddScoped<IAuditLogService, AuditLogService>();
+builder.Services.AddScoped<IReportService, ReportService>();
 
 
 
@@ -243,6 +246,8 @@ builder.Services.AddCors(options =>
             .AllowAnyMethod();
     });
 });
+
+builder.Services.AddMemoryCache();
 
 var app = builder.Build();
 

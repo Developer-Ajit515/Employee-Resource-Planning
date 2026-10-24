@@ -1,4 +1,5 @@
-﻿using ERP.APPLICATIONBUSINESS.Interfaces.IRepository;
+﻿using ERP.APPLICATION.Interfaces.IRepository;
+using ERP.APPLICATIONBUSINESS.Interfaces.IRepository;
 using ERP.DOMAINMODELS.Entities;
 using ERP.INFRASTRUCTUREDATA.Data;
 using Microsoft.EntityFrameworkCore;
@@ -14,21 +15,102 @@ namespace ERP.INFRASTRUCTUREDATA.Repositories
             _context = context;
         }
 
-        public async Task<List<AuditLog>> GetRecentAsync(
-            int count = 10)
+        public async Task<List<AuditLog>> GetAllAsync(
+            CancellationToken cancellationToken = default)
         {
-            return await _context.AuditLogs
+            return await _context.Set<AuditLog>()
                 .AsNoTracking()
                 .OrderByDescending(x => x.CreatedAt)
-                .Take(count)
-                .ToListAsync();
+                .ToListAsync(cancellationToken);
         }
 
-        public async Task AddAsync(AuditLog auditLog)
+        public async Task<AuditLog?> GetByIdAsync(
+            long id,
+            CancellationToken cancellationToken = default)
         {
-            await _context.AuditLogs.AddAsync(auditLog);
+            return await _context.Set<AuditLog>()
+                .AsNoTracking()
+                .FirstOrDefaultAsync(
+                    x => x.Id == id,
+                    cancellationToken);
+        }
 
-            await _context.SaveChangesAsync();
+        public async Task<List<AuditLog>> SearchAsync(
+            string? search,
+            string? action,
+            string? entityName,
+            int? userId,
+            DateTime? fromDate,
+            DateTime? toDate,
+            CancellationToken cancellationToken = default)
+        {
+            IQueryable<AuditLog> query =
+                _context.Set<AuditLog>().AsNoTracking();
+
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                string term = search.Trim();
+
+                query = query.Where(x =>
+                    x.Description.Contains(term) ||
+                    x.EntityName.Contains(term) ||
+                    x.Action.Contains(term) ||
+                    (x.EntityId != null && x.EntityId.Contains(term)));
+            }
+
+            if (!string.IsNullOrWhiteSpace(action))
+            {
+                query = query.Where(x => x.Action == action);
+            }
+
+            if (!string.IsNullOrWhiteSpace(entityName))
+            {
+                query = query.Where(x => x.EntityName == entityName);
+            }
+
+            if (userId.HasValue)
+            {
+                query = query.Where(x => x.UserId == userId.Value);
+            }
+
+            if (fromDate.HasValue)
+            {
+                query = query.Where(x =>
+                    x.CreatedAt >= fromDate.Value);
+            }
+
+            if (toDate.HasValue)
+            {
+                query = query.Where(x =>
+                    x.CreatedAt < toDate.Value);
+            }
+
+            return await query
+                .OrderByDescending(x => x.CreatedAt)
+                .ToListAsync(cancellationToken);
+        }
+
+        public async Task<AuditLog> AddAsync(
+            AuditLog auditLog,
+            CancellationToken cancellationToken = default)
+        {
+            auditLog.CreatedAt = DateTime.UtcNow;
+
+            await _context.Set<AuditLog>()
+                .AddAsync(auditLog, cancellationToken);
+
+            await _context.SaveChangesAsync(cancellationToken);
+
+            return auditLog;
+        }
+
+        public async Task<IEnumerable<AuditLog>> GetRecentAsync(int count = 10, CancellationToken cancellationToken = default)
+        {
+            return await _context.AuditLogs
+        .AsNoTracking()
+        .OrderByDescending(x => x.CreatedAt)
+        .Take(Math.Max(0, count))
+        .ToListAsync(cancellationToken);
         }
     }
 }

@@ -1,6 +1,8 @@
-﻿using ERP.APPLICATIONBUSINESS.Interfaces.IRepository;
+﻿
+using ERP.APPLICATIONBUSINESS.Interfaces.IRepository;
 using ERP.APPLICATIONBUSINESS.Interfaces.IServices;
 using ERP.DOMAINMODELS.Dtos;
+using ERP.DOMAINMODELS.DTOs;
 using ERP.DOMAINMODELS.Entities;
 
 namespace ERP.APPLICATIONBUSINESS.Services
@@ -10,28 +12,38 @@ namespace ERP.APPLICATIONBUSINESS.Services
         private readonly IInventoryRepository _repository;
         private readonly IAuditLogService _auditLogService;
 
-        public InventoryService(IInventoryRepository repository, IAuditLogService auditLogService)
+        public InventoryService(
+            IInventoryRepository repository,
+            IAuditLogService auditLogService)
         {
             _repository = repository;
             _auditLogService = auditLogService;
         }
 
+        // =========================
+        // GET ALL
+        // =========================
+
         public async Task<IEnumerable<InventoryDto>> GetAllAsync()
         {
             var inventories = await _repository.GetAllAsync();
-
             return inventories.Select(MapToDto);
         }
+
+        // =========================
+        // GET BY ID
+        // =========================
 
         public async Task<InventoryDto?> GetByIdAsync(int id)
         {
             var inventory = await _repository.GetByIdAsync(id);
 
-            if (inventory == null)
-                return null;
-
-            return MapToDto(inventory);
+            return inventory == null ? null : MapToDto(inventory);
         }
+
+        // =========================
+        // GET BY PRODUCT ID
+        // =========================
 
         public async Task<IEnumerable<InventoryDto>> GetByProductIdAsync(
             int productId)
@@ -50,7 +62,7 @@ namespace ERP.APPLICATIONBUSINESS.Services
             CreateStockInDto dto)
         {
             if (dto.Quantity <= 0)
-                throw new Exception(
+                throw new ArgumentException(
                     "Stock-in quantity must be greater than zero.");
 
             var inventories =
@@ -69,36 +81,52 @@ namespace ERP.APPLICATIONBUSINESS.Services
                     CreatedAt = DateTime.UtcNow
                 };
 
-                var created =
-                    await _repository.AddAsync(inventory);
+                var created = await _repository.AddAsync(inventory);
 
-                await _auditLogService.AddAsync(new AuditLog
+                await _auditLogService.CreateAsync(new AuditLogDto
                 {
+                    UserId = null,
                     Action = "Stock In",
-
                     EntityName = "Inventory",
-
-                    EntityId = dto.ProductId.ToString(),
-
+                    EntityId = created.Id.ToString(),
                     Description =
-        $"Stock added for Product ID {dto.ProductId}. Quantity: {dto.Quantity}",
-
-                    CreatedAt = DateTime.UtcNow
+                        $"Stock added for Product ID {dto.ProductId}. " +
+                        $"Quantity: {dto.Quantity}",
+                    OldValues = null,
+                    NewValues =
+                        $"ProductId: {dto.ProductId}, " +
+                        $"Quantity: {created.Quantity}",
+                    IpAddress = null
                 });
 
                 return MapToDto(created);
             }
 
+            var oldQuantity = existing.Quantity;
+
             existing.Quantity += dto.Quantity;
             existing.TransactionType = "IN";
             existing.Remarks = dto.Remarks;
+            existing.CreatedAt = DateTime.UtcNow;
 
-            var success =
-                await _repository.UpdateAsync(existing);
+            var success = await _repository.UpdateAsync(existing);
 
             if (!success)
-                throw new Exception(
-                    "Failed to update inventory.");
+                throw new Exception("Failed to update inventory.");
+
+            await _auditLogService.CreateAsync(new AuditLogDto
+            {
+                UserId = null,
+                Action = "Stock In",
+                EntityName = "Inventory",
+                EntityId = existing.Id.ToString(),
+                Description =
+                    $"Stock added for Product ID {dto.ProductId}. " +
+                    $"Quantity: {dto.Quantity}",
+                OldValues = $"Quantity: {oldQuantity}",
+                NewValues = $"Quantity: {existing.Quantity}",
+                IpAddress = null
+            });
 
             return MapToDto(existing);
         }
@@ -111,7 +139,7 @@ namespace ERP.APPLICATIONBUSINESS.Services
             CreateStockOutDto dto)
         {
             if (dto.Quantity <= 0)
-                throw new Exception(
+                throw new ArgumentException(
                     "Stock-out quantity must be greater than zero.");
 
             var inventories =
@@ -120,37 +148,35 @@ namespace ERP.APPLICATIONBUSINESS.Services
             var existing = inventories.FirstOrDefault();
 
             if (existing == null)
-                throw new Exception(
-                    "Inventory not found.");
+                throw new Exception("Inventory not found.");
 
             if (existing.Quantity < dto.Quantity)
-                throw new Exception(
-                    "Insufficient stock.");
+                throw new Exception("Insufficient stock.");
+
+            var oldQuantity = existing.Quantity;
 
             existing.Quantity -= dto.Quantity;
             existing.TransactionType = "OUT";
             existing.CreatedAt = DateTime.UtcNow;
             existing.Remarks = dto.Remarks;
 
-            var success =
-                await _repository.UpdateAsync(existing);
+            var success = await _repository.UpdateAsync(existing);
 
             if (!success)
-                throw new Exception(
-                    "Failed to update inventory.");
+                throw new Exception("Failed to update inventory.");
 
-            await _auditLogService.AddAsync(new AuditLog
+            await _auditLogService.CreateAsync(new AuditLogDto
             {
+                UserId = null,
                 Action = "Stock Out",
-
                 EntityName = "Inventory",
-
-                EntityId = dto.ProductId.ToString(),
-
+                EntityId = existing.Id.ToString(),
                 Description =
-        $"Stock removed for Product ID {dto.ProductId}. Quantity: {dto.Quantity}",
-
-                CreatedAt = DateTime.UtcNow
+                    $"Stock removed for Product ID {dto.ProductId}. " +
+                    $"Quantity: {dto.Quantity}",
+                OldValues = $"Quantity: {oldQuantity}",
+                NewValues = $"Quantity: {existing.Quantity}",
+                IpAddress = null
             });
 
             return MapToDto(existing);
@@ -179,23 +205,50 @@ namespace ERP.APPLICATIONBUSINESS.Services
                     CreatedAt = DateTime.UtcNow
                 };
 
-                var created =
-                    await _repository.AddAsync(inventory);
+                var created = await _repository.AddAsync(inventory);
+
+                await _auditLogService.CreateAsync(new AuditLogDto
+                {
+                    UserId = null,
+                    Action = "Stock Adjustment",
+                    EntityName = "Inventory",
+                    EntityId = created.Id.ToString(),
+                    Description =
+                        $"Initial inventory adjustment for Product ID " +
+                        $"{dto.ProductId}. Quantity: {dto.Quantity}",
+                    OldValues = null,
+                    NewValues = $"Quantity: {created.Quantity}",
+                    IpAddress = null
+                });
 
                 return MapToDto(created);
             }
+
+            var oldQuantity = existing.Quantity;
 
             existing.Quantity += dto.Quantity;
             existing.TransactionType = "ADJUSTMENT";
             existing.Remarks = dto.Remarks;
             existing.CreatedAt = DateTime.UtcNow;
 
-            var success =
-                await _repository.UpdateAsync(existing);
+            var success = await _repository.UpdateAsync(existing);
 
             if (!success)
-                throw new Exception(
-                    "Failed to update inventory.");
+                throw new Exception("Failed to update inventory.");
+
+            await _auditLogService.CreateAsync(new AuditLogDto
+            {
+                UserId = null,
+                Action = "Stock Adjustment",
+                EntityName = "Inventory",
+                EntityId = existing.Id.ToString(),
+                Description =
+                    $"Inventory adjusted for Product ID {dto.ProductId}. " +
+                    $"Adjustment: {dto.Quantity}",
+                OldValues = $"Quantity: {oldQuantity}",
+                NewValues = $"Quantity: {existing.Quantity}",
+                IpAddress = null
+            });
 
             return MapToDto(existing);
         }
@@ -206,15 +259,38 @@ namespace ERP.APPLICATIONBUSINESS.Services
 
         public async Task<bool> DeleteAsync(int id)
         {
-            return await _repository.DeleteAsync(id);
+            var inventory = await _repository.GetByIdAsync(id);
+
+            if (inventory == null)
+                return false;
+
+            var success = await _repository.DeleteAsync(id);
+
+            if (success)
+            {
+                await _auditLogService.CreateAsync(new AuditLogDto
+                {
+                    UserId = null,
+                    Action = "Deleted",
+                    EntityName = "Inventory",
+                    EntityId = id.ToString(),
+                    Description =
+                        $"Inventory record for Product ID " +
+                        $"{inventory.ProductId} was deleted.",
+                    OldValues = $"Quantity: {inventory.Quantity}",
+                    NewValues = null,
+                    IpAddress = null
+                });
+            }
+
+            return success;
         }
 
         // =========================
         // MAPPING
         // =========================
 
-        private static InventoryDto MapToDto(
-            Inventory inventory)
+        private static InventoryDto MapToDto(Inventory inventory)
         {
             return new InventoryDto
             {

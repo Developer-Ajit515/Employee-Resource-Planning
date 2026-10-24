@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using ERP.APPLICATION.Interfaces.IRepository;
 using ERP.APPLICATIONBUSINESS.Interfaces.IRepository;
 
 

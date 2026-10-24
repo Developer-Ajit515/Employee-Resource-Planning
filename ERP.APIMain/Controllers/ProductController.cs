@@ -50,9 +50,10 @@ namespace ERP.APIMain.Controllers
         }
 
         // PUT: api/product
-        [HasPermission("Product.Update")]
+        [HasPermission("Product.Edit")]
         [HttpPut]
-        public async Task<IActionResult> Update(UpdateProductDto dto)
+        public async Task<IActionResult> Update(
+     [FromBody] UpdateProductDto dto)
         {
             await _productService.Update(dto);
 

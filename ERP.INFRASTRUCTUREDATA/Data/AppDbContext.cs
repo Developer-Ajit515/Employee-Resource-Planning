@@ -1,18 +1,27 @@
 ﻿using ERP.DOMAINMODELS.Entities;
-using ERP.DOMAINMODELS.Entities.ERP.DOMAINMODELS.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.Json;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
+using ERP.DOMAINMODELS.Entities.ERP.DOMAINMODELS.Entities;
+
 
 namespace ERP.INFRASTRUCTUREDATA.Data
 {
     public class AppDbContext : DbContext
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+        private readonly IAuditLogContext? _auditLogContext;
+
+        public AppDbContext(
+            DbContextOptions<AppDbContext> options,
+            IAuditLogContext? auditLogContext = null)
+            : base(options)
         {
+            _auditLogContext = auditLogContext;
         }
 
         public DbSet<Product> Products { get; set; }
@@ -76,6 +85,211 @@ namespace ERP.INFRASTRUCTUREDATA.Data
         public DbSet<GoodsReceiptItem>GoodsReceiptItems { get; set; }
 
         public DbSet<SystemSetting> SystemSettings { get; set; }
+
+        private sealed class AuditSnapshot
+        {
+            public EntityEntry Entry { get; init; } = null!;
+            public string Action { get; init; } = string.Empty;
+            public string EntityName { get; init; } = string.Empty;
+            public string? OldValues { get; init; }
+            public string? NewValues { get; init; }
+        }
+
+        private static readonly HashSet<string> SensitiveProperties =
+            new(StringComparer.OrdinalIgnoreCase)
+            {
+        "Password",
+        "PasswordHash",
+        "Token",
+        "AccessToken",
+        "RefreshToken",
+        "Secret",
+        "ClientSecret",
+        "SecurityStamp"
+            };
+
+        private static bool IsSensitive(string propertyName)
+        {
+            return SensitiveProperties.Contains(propertyName)
+                || propertyName.Contains("Password",
+                    StringComparison.OrdinalIgnoreCase)
+                || propertyName.Contains("Token",
+                    StringComparison.OrdinalIgnoreCase)
+                || propertyName.Contains("Secret",
+                    StringComparison.OrdinalIgnoreCase);
+        }
+
+        private static string SerializeValues(
+            IDictionary<string, object?> values)
+        {
+            return JsonSerializer.Serialize(values);
+        }
+
+        private List<AuditSnapshot> CaptureAuditSnapshots()
+        {
+            ChangeTracker.DetectChanges();
+
+            return ChangeTracker.Entries()
+                .Where(entry =>
+                    entry.Entity is not AuditLog &&
+                    (entry.State == EntityState.Added ||
+                     entry.State == EntityState.Modified ||
+                     entry.State == EntityState.Deleted))
+                .Select(entry =>
+                {
+                    var oldValues = new Dictionary<string, object?>();
+                    var newValues = new Dictionary<string, object?>();
+
+                    foreach (var property in entry.Properties)
+                    {
+                        var name = property.Metadata.Name;
+
+                        if (IsSensitive(name))
+                            continue;
+
+                        if (entry.State == EntityState.Added)
+                        {
+                            newValues[name] = property.CurrentValue;
+                        }
+                        else if (entry.State == EntityState.Deleted)
+                        {
+                            oldValues[name] = property.OriginalValue;
+                        }
+                        else if (property.IsModified)
+                        {
+                            oldValues[name] = property.OriginalValue;
+                            newValues[name] = property.CurrentValue;
+                        }
+                    }
+
+                    var action = entry.State switch
+                    {
+                        EntityState.Added => "Create",
+                        EntityState.Modified => "Update",
+                        EntityState.Deleted => "Delete",
+                        _ => string.Empty
+                    };
+
+                    return new AuditSnapshot
+                    {
+                        Entry = entry,
+                        Action = action,
+                        EntityName = entry.Metadata.ClrType.Name,
+                        OldValues = oldValues.Count > 0
+                            ? SerializeValues(oldValues)
+                            : null,
+                        NewValues = newValues.Count > 0
+                            ? SerializeValues(newValues)
+                            : null
+                    };
+                })
+                .ToList();
+        }
+
+        private string? GetEntityId(EntityEntry entry)
+        {
+            var primaryKey = entry.Metadata.FindPrimaryKey();
+
+            if (primaryKey == null)
+                return null;
+
+            var values = primaryKey.Properties.Select(property =>
+            {
+                var value = entry.Property(property.Name).CurrentValue;
+                return value?.ToString() ?? string.Empty;
+            });
+
+            return string.Join(",", values);
+        }
+
+        private async Task<int> SaveWithAuditAsync( CancellationToken cancellationToken)
+        {
+            var snapshots = CaptureAuditSnapshots();
+
+            if (snapshots.Count == 0)
+            {
+                return  await base.SaveChangesAsync(
+                acceptAllChangesOnSuccess: true,
+                cancellationToken: cancellationToken);
+            }
+
+            Microsoft.EntityFrameworkCore.Storage.IDbContextTransaction?
+                transaction = null;
+
+            var ownsTransaction = Database.IsRelational()
+                && Database.CurrentTransaction == null;
+
+            try
+            {
+                if (ownsTransaction)
+                {
+                    transaction = await Database.BeginTransactionAsync(
+                        cancellationToken);
+                }
+
+                // Save business entities first so generated IDs are available.
+                var businessChanges =
+                    await base.SaveChangesAsync(
+                    acceptAllChangesOnSuccess: true,
+                    cancellationToken: cancellationToken);
+
+                var auditLogs = snapshots.Select(snapshot => new AuditLog
+                {
+                    UserId = _auditLogContext?.GetUserId(),
+                    Action = snapshot.Action,
+                    EntityName = snapshot.EntityName,
+                    EntityId = GetEntityId(snapshot.Entry),
+                    Description = $"{snapshot.Action} {snapshot.EntityName}",
+                    OldValues = snapshot.OldValues,
+                    NewValues = snapshot.NewValues,
+                    IpAddress = _auditLogContext?.GetIpAddress(),
+                    CreatedAt = DateTime.UtcNow
+                }).ToList();
+
+                AuditLogs.AddRange(auditLogs);
+
+                var auditChanges =
+                    await base.SaveChangesAsync(cancellationToken);
+
+                if (transaction != null)
+                {
+                    await transaction.CommitAsync(cancellationToken);
+                }
+
+                return businessChanges + auditChanges;
+            }
+            catch
+            {
+                if (transaction != null)
+                {
+                    await transaction.RollbackAsync(CancellationToken.None);
+                }
+
+                throw;
+            }
+            finally
+            {
+                if (transaction != null)
+                {
+                    await transaction.DisposeAsync();
+                }
+            }
+        }
+
+        public override Task<int> SaveChangesAsync(
+            CancellationToken cancellationToken = default)
+        {
+            return SaveWithAuditAsync(cancellationToken);
+        }
+
+        public override Task<int> SaveChangesAsync(
+            bool acceptAllChangesOnSuccess,
+            CancellationToken cancellationToken = default)
+        {
+            // This implementation accepts changes after both saves.
+            // Do not use acceptAllChangesOnSuccess=false with this audit pattern.
+            return SaveWithAuditAsync(cancellationToken);
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

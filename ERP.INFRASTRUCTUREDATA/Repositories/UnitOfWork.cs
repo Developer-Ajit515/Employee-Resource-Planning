@@ -3,6 +3,7 @@ using ERP.APPLICATIONBUSINESS.Interfaces;
 using ERP.INFRASTRUCTUREDATA.Data;
 using System.Threading.Tasks;
 using ERP.DOMAINMODELS.Entities;
+using ERP.APPLICATION.Interfaces.IRepository;
 
 
 namespace ERP.INFRASTRUCTUREDATA.Repositories
@@ -104,6 +105,8 @@ namespace ERP.INFRASTRUCTUREDATA.Repositories
         public IPurchaseOrderRepository PurchaseOrder { get; private set; }
 
         public IGoodsReceiptRepository GoodsReceipt { get; private set; }
+
+        
 
         public async Task<int> SaveChangesAsync()
         {
