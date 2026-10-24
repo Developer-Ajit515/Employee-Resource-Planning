@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Employee Management System
 
 A full-stack web application designed to simplify employee record management through a responsive user interface and a RESTful backend API. The project demonstrates modern web development practices using **ASP.NET Core Web API, React.js, and Microsoft SQL Server**.
@@ -215,8 +215,8 @@ Recommended testing workflow:
 
 **Your Name**
 
-- GitHub: [Your GitHub Profile]([(https://github.com/Developer-Ajit515))
-- LinkedIn: [[Your LinkedIn Profile](https://www.linkedin.com/in/ajit-singh-62836b158/?isSelfProfile=true)]
+- GitHub: [(https://github.com/Developer-Ajit515)]
+- LinkedIn: [(https://www.linkedin.com/in/ajit-singh-62836b158/?isSelfProfile=true)]
 
 ## 📄 License
 
