@@ -14,7 +14,7 @@ import {
     FaSyncAlt
 } from "react-icons/fa";
 
-import DepartmentService from "../../services/DepartmentService";
+import DepartmentService from "../../services/departmentService";
 import sweetAlert from "../../utils/sweetAlert";
 import notification from "../../utils/notification";
 import Pagination from "../../components/common/Pagination";
