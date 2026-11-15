@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { FaBuilding, FaSave } from "react-icons/fa";
 import Swal from "sweetalert2";
 
-import DepartmentService from "../../services/DepartmentService";
+import DepartmentService from "../../services/departmentService";
 import "./Department.css";
 
 const DepartmentForm = ({ departmentId, onClose, onSaved }) => {
