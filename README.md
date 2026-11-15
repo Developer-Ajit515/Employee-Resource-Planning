@@ -247,6 +247,36 @@ The backend is designed to communicate with a React-based frontend through REST 
 - Restricted CORS configuration.
 - Avoid exposing sensitive employee and business information.
 
+## Screenshots
+## 📸 Application Screenshots
+
+<table>
+  <tr>
+    <td align="center"><b>Login Page</b></td>
+    <td align="center"><b>Admin Dashboard</b></td>
+  </tr>
+  <tr>
+    <td><img src="Screenshots/login.png" width="400"></td>
+    <td><img src="Screenshots/AdminDashboard.png" width="400"></td>
+  </tr>
+  <tr>
+    <td align="center"><b>Employee Management</b></td>
+    <td align="center"><b>Product Management</b></td>
+  </tr>
+  <tr>
+    <td><img src="Screenshots/EmployeeManagement.png" width="400"></td>
+    <td><img src="Screenshots/ProductManagement.png" width="400"></td>
+  </tr>
+  <tr>
+    <td align="center"><b>Purchase Order</b></td>
+    <td align="center"><b>Reports</b></td>
+  </tr>
+  <tr>
+    <td><img src="Screenshots/PurchaseOrder.png" width="400"></td>
+    <td><img src="Screenshots/Report.png" width="400"></td>
+  </tr>
+</table>
+
 ## Future Improvements
 
 - Automated unit and integration testing.
