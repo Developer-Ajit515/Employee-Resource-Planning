@@ -234,18 +234,22 @@ builder.Services.AddSwaggerGen(options =>
         });
 });
 
+// CORS Configuration
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("ReactClient", policy =>
     {
         policy
             .WithOrigins(
-                "http://localhost:5173"
+                "http://localhost:5173",
+                "https://employee-resource-planning.pages.dev"
             )
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
 });
+
+
 
 builder.Services.AddMemoryCache();
 
@@ -279,18 +283,17 @@ if (app.Environment.IsDevelopment())
 }
 
 
-app.UseHttpsRedirection();
-
-
 // Middleware
 app.UseMiddleware<ExceptionMiddleware>();
 
+app.UseHttpsRedirection();
+
+// CORS must execute before Authentication
+app.UseCors("ReactClient");
 
 // Authentication & Authorization
 app.UseAuthentication();
-app.UseCors("ReactClient");
 app.UseAuthorization();
-
 
 // Controllers
 app.MapControllers();
