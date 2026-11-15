@@ -1,230 +1,274 @@
+# Employee Resource Planning System (ERP)
 
-# Employee Management System
+A full-stack Enterprise Resource Planning (ERP) application designed to streamline employee administration and business operations. The backend is built using **ASP.NET Core Web API, C#, Entity Framework Core, and Microsoft SQL Server**, following a layered architecture.
 
-A full-stack web application designed to simplify employee record management through a responsive user interface and a RESTful backend API. The project demonstrates modern web development practices using **ASP.NET Core Web API, React.js, and Microsoft SQL Server**.
+The application provides centralized management of users, roles, permissions, employees, products, purchasing operations, and other business workflows.
 
-## 🚀 Overview
+## Overview
 
-The Employee Management System helps organizations manage employee information efficiently through a centralized application. It provides a foundation for creating, viewing, updating, and deleting employee records, with scope for authentication, authorization, and employee administration.
+The Employee Resource Planning System aims to simplify organizational operations through a centralized ERP platform.
 
-## ✨ Features
+The backend uses a modular, layered architecture to separate API responsibilities, business logic, domain models, and infrastructure concerns.
 
-- **Employee Management:** Create, view, update, and delete employee records.
-- **RESTful API:** Backend endpoints built with ASP.NET Core Web API.
-- **Database Integration:** Store and retrieve employee information using SQL Server.
-- **Responsive UI:** React-based interface for desktop and mobile screens.
-- **Form Validation:** Validate employee information before submission.
-- **Search and Filtering:** Find employee records quickly, if implemented.
-- **Authentication and Authorization:** Secure access to protected features, if configured.
-- **Error Handling:** Handle API errors and invalid input.
-- **Reusable Components:** Maintainable frontend architecture using React components.
+## Key Features
 
-## 🛠️ Tech Stack
+- **User Management:** Manage application users and their information.
+- **Authentication:** JWT-based authentication.
+- **Role and Permission Management:** Manage roles and assign permissions.
+- **Employee Management:** Maintain employee records.
+- **Product Management:** Manage products and categories.
+- **Supplier Management:** Maintain supplier information.
+- **Purchase Management:** Manage purchase orders and related operations.
+- **Goods Receipt:** Handle goods receipt workflows.
+- **Notifications and Messaging:** Support application notifications and communication.
+- **Search:** Search across supported application data.
+- **Reporting:** Generate business-related reports.
+- **Payment Integration:** Stripe.NET integration.
 
-### Frontend
-- React.js
-- JavaScript
-- HTML5
-- CSS3
-- Axios
-- React Router
+## Technology Stack
 
 ### Backend
-- ASP.NET Core Web API
 - C#
-- Entity Framework Core
+- ASP.NET Core Web API
+- .NET 8
+- Entity Framework Core 8
+- AutoMapper
+- FluentValidation
+- BCrypt.Net
+- JWT Authentication
+- Swagger / Swashbuckle
 
 ### Database
 - Microsoft SQL Server
 - SQL Server Management Studio (SSMS)
 
+### Payment Integration
+- Stripe.NET
+
 ### Development Tools
-- Visual Studio / Visual Studio Code
+- Visual Studio 2022
+- Visual Studio Code
+- Postman
 - Git and GitHub
-- Postman / Swagger
 
-## 🏗️ Architecture
+## Architecture
 
-The application follows a client-server architecture:
-
-1. **React Frontend:** Displays employee data and provides forms for employee operations.
-2. **ASP.NET Core Web API:** Processes HTTP requests, validates data, and executes business operations.
-3. **Entity Framework Core:** Communicates with the database.
-4. **SQL Server:** Persists employee records.
-
-## 📂 Project Structure
-
-The following is a suggested structure. Adjust the paths to match your actual repository.
+The backend follows a layered architecture.
 
 ```text
-Employee-Management-System/
-├── frontend/
-│   ├── public/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── services/
-│   │   ├── App.jsx
-│   │   └── main.jsx
-│   └── package.json
+                 React Frontend
+                       |
+                       | HTTP / REST API
+                       |
+                       v
+                 ERP.APIMain
+                 (API Layer)
+                       |
+                       v
+              ERP.APPLICATIONBUSINESS
+               (Business Logic)
+                       |
+              -------------------
+              |                 |
+              v                 v
+       ERP.DOMAINMODELS   ERP.INFRASTRUCTUREDATA
+        (Domain Layer)     (Data Access Layer)
+                                |
+                                v
+                         Entity Framework Core
+                                |
+                                v
+                         Microsoft SQL Server
+```
+
+### Project Responsibilities
+
+| Project | Responsibility |
+|---|---|
+| ERP.APIMain | API controllers, configuration, authentication and HTTP endpoints |
+| ERP.APPLICATIONBUSINESS | Business logic, application services and validations |
+| ERP.DOMAINMODELS | Domain entities and application models |
+| ERP.INFRASTRUCTUREDATA | Database context, repositories and data access |
+| ERP.SHAREDUTILITY | Shared utilities and common functionality |
+
+## Project Structure
+
+```text
+Employee-Resource-Planning/
 │
-├── backend/
+├── ERP.APIMain/
 │   ├── Controllers/
-│   ├── Models/
-│   ├── Data/
-│   ├── Services/
-│   ├── Repositories/
+│   ├── Middleware/
 │   ├── Program.cs
-│   └── appsettings.json
+│   └── ERP.APIMain.csproj
 │
+├── ERP.APPLICATIONBUSINESS/
+│   ├── Interfaces/
+│   ├── Services/
+│   └── ERP.APPLICATIONBUSINESS.csproj
+│
+├── ERP.DOMAINMODELS/
+│   ├── Entities/
+│   ├── DTOs/
+│   ├── Enums/
+│   └── ERP.DOMAINMODELS.csproj
+│
+├── ERP.INFRASTRUCTUREDATA/
+│   ├── Data/
+│   ├── Repositories/
+│   ├── Migrations/
+│   └── ERP.INFRASTRUCTUREDATA.csproj
+│
+├── ERP.SHAREDUTILITY/
+│   ├── Helpers/
+│   ├── Constants/
+│   └── ERP.SHAREDUTILITY.csproj
+│
+├── ERPSystem.sln
 ├── .gitignore
+├── LICENSE
 └── README.md
 ```
 
-## ⚙️ Prerequisites
+*Note: The structure above describes the logical organization. Verify individual folder names against the latest source before relying on every path.*
 
-Install the following software before running the project:
+## Prerequisites
 
-- [Node.js](https://nodejs.org/)
+Install the following:
+
 - [.NET SDK](https://dotnet.microsoft.com/download)
 - [Microsoft SQL Server](https://www.microsoft.com/sql-server)
-- [SQL Server Management Studio](https://learn.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
+- [SQL Server Management Studio](https://learn.microsoft.com/sql/ssms/)
+- [Visual Studio 2022](https://visualstudio.microsoft.com/)
 - [Git](https://git-scm.com/)
 
-## 🔧 Installation and Setup
+## Installation and Setup
 
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/Devloper-Ajit515/Employee-Management-System.git
-cd Employee-Management-System
+git clone https://github.com/Developer-Ajit515/Employee-Resource-Planning.git
+
+cd Employee-Resource-Planning
 ```
 
-Replace `YOUR-USERNAME` with your GitHub username.
+### 2. Configure SQL Server
 
-### 2. Configure the Database
+Create your SQL Server database.
 
-Create a SQL Server database for the application.
+Configure the database connection using the connection string key expected by `Program.cs` and your database configuration.
 
-Update the connection string in the backend's `appsettings.json` file:
+Example:
 
 ```json
 {
   "ConnectionStrings": {
-    "DefaultConnection": "Server=YOUR_SERVER;Database=EmployeeManagementDB;Trusted_Connection=True;TrustServerCertificate=True;"
+    "DefaultConnection": "Server=(localdb)\\MSSQLLocalDB;Database=Db_ERPSystem;Trusted_Connection=True;TrustServerCertificate=True;"
   }
 }
 ```
 
-Replace `YOUR_SERVER` with your SQL Server instance name. Use the connection-string key expected by your actual application.
+Replace `YOUR_SERVER` with your SQL Server instance.
 
-**Security:** Never commit database passwords, JWT secrets, or other credentials to GitHub. Use user secrets or environment variables for sensitive configuration.
+**Security:** Never commit database passwords, JWT secrets, or Stripe secret keys. Use .NET User Secrets or environment variables for sensitive configuration.
 
-### 3. Run Database Migrations
+### 3. Restore Dependencies
 
-If the backend uses Entity Framework Core migrations, run these commands from the backend project directory:
-
-```bash
-dotnet restore
-dotnet ef database update
-```
-
-If the `dotnet ef` command is unavailable, install the Entity Framework Core CLI tool and ensure the project's EF Core design package is configured.
-
-### 4. Run the Backend
-
-From the directory containing the backend `.csproj` file:
+Run:
 
 ```bash
-dotnet restore
-dotnet build
-dotnet run
+dotnet restore ERPSystem.sln
 ```
 
-Check the application output for the API URL and Swagger address.
+### 4. Apply Database Migrations
 
-### 5. Run the Frontend
+The project keeps its migrations in the Infrastructure project.
 
-Open another terminal and navigate to the frontend directory:
+Run:
 
 ```bash
-cd frontend
-npm install
-npm run dev
+dotnet ef database update --project ERP.INFRASTRUCTUREDATA/ERP.INFRASTRUCTUREDATA.csproj --startup-project ERP.APIMain/ERP.APIMain.csproj
 ```
 
-Open the local URL printed by Vite in your terminal.
+Ensure the EF Core CLI tool and design-time configuration are available.
 
-If your project uses Create React App or another build tool, follow the scripts defined in `package.json`.
+### 5. Build the Solution
 
-## 🔗 API Endpoints
+```bash
+dotnet build ERPSystem.sln
+```
 
-Example REST API endpoints (actual routes may vary depending on implementation):
+### 6. Run the Backend API
 
-| Method | Endpoint | Description |
-|---|---|---|
-| GET | `/api/Employees` | Retrieve all employees |
-| GET | `/api/Employees/{id}` | Retrieve an employee by ID |
-| POST | `/api/Employees` | Create a new employee |
-| PUT | `/api/Employees/{id}` | Update an employee |
-| DELETE | `/api/Employees/{id}` | Delete an employee |
+```bash
+dotnet run --project ERP.APIMain/ERP.APIMain.csproj
+```
 
-Test available endpoints using Swagger UI or Postman.
+Check the terminal output for the application URL.
 
-## 🔒 Security Considerations
+### 7. Access Swagger
 
-- Validate incoming API requests.
-- Use authentication and authorization for protected endpoints.
-- Store secrets outside source control.
-- Configure CORS to allow only trusted frontend origins in production.
-- Use HTTPS in production.
-- Avoid exposing sensitive employee information in API responses or logs.
+Open the Swagger URL displayed by the application.
 
-## 🧪 Testing
+Swagger provides an interface to inspect and test the available API endpoints.
 
-Recommended testing workflow:
+## Authentication
 
-1. Test API endpoints using Swagger or Postman.
-2. Verify employee creation, retrieval, updates, and deletion.
-3. Test invalid form submissions and API error responses.
-4. Verify frontend-to-backend connectivity.
-5. Test authorization rules if authentication is implemented.
+The backend includes JWT-based authentication.
 
-## 🚀 Future Enhancements
+For protected endpoints, send the access token in the HTTP Authorization header:
 
-- Employee profile photos
-- Department and designation management
-- Employee attendance tracking
-- Leave management
-- Salary and payroll management
-- Pagination, sorting, and advanced search
-- Export employee records to Excel or PDF
-- Automated unit and integration tests
-- Docker-based deployment
-- Cloud hosting and CI/CD
+```http
+Authorization: Bearer YOUR_JWT_TOKEN
+```
 
-## 🎯 Project Objectives
+Password hashing is supported through BCrypt.
 
-- Demonstrate full-stack application development.
-- Build RESTful APIs using ASP.NET Core.
-- Integrate React.js with a .NET backend.
-- Perform database operations using SQL Server.
-- Apply maintainable coding practices and version control.
+## Database
 
-## 👨‍💻 Author
+The application uses Microsoft SQL Server with Entity Framework Core for database operations.
 
-**Your Name**
+Database migrations are maintained in the Infrastructure project.
 
-- GitHub: [(https://github.com/Developer-Ajit515)]
-- LinkedIn: [(https://www.linkedin.com/in/ajit-singh-62836b158/?isSelfProfile=true)]
+## Frontend
 
-## 📄 License
+The backend is designed to communicate with a React-based frontend through REST APIs.
 
-This project is available under the MIT License. Add a `LICENSE` file to the repository if you intend to distribute the project under that license.
+**Repository note:** The React frontend is not currently included in this GitHub repository's root structure. Add the frontend source or provide its repository link to make the project independently reproducible as a complete full-stack application.
+
+## Security Practices
+
+- JWT-based authentication.
+- BCrypt password hashing.
+- Role and permission-based access control.
+- Request validation.
+- Secure configuration of sensitive credentials.
+- HTTPS for production environments.
+- Restricted CORS configuration.
+- Avoid exposing sensitive employee and business information.
+
+## Future Improvements
+
+- Automated unit and integration testing.
+- Docker containerization.
+- CI/CD using GitHub Actions.
+- Centralized logging and monitoring.
+- Advanced reporting and analytics.
+- Improved API documentation.
+- Performance optimization and caching.
+- Cloud deployment.
+
+## Author
+
+**Ajit Singh**
+
+- GitHub: https://github.com/Developer-Ajit515
+- LinkedIn: https://www.linkedin.com/in/ajit-singh-62836b158/
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
 
-If you find this project useful, consider giving the repository a ⭐ on GitHub.
-=======
-# Employee-Management-System
->>>>>>> origin/main
+If you find this project useful, consider giving it a star on GitHub.
