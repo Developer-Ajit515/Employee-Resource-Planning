@@ -1,0 +1,23 @@
+.app-shell {
+    min-height: 100vh;
+    background: #f8fafc;
+}
+
+.main-content {
+    min-height: 100vh;
+    margin-left: 260px;
+    transition: margin-left 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.page-content {
+    padding: 24px;
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+    .main-content {
+        margin-left: 0;
+    }
+}

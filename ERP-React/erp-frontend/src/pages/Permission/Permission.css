@@ -1,0 +1,1092 @@
+/* ==========================================
+   PERMISSION PAGE
+========================================== */
+
+.permission-page {
+    padding: 24px;
+    width: 100%;
+    min-height: 100%;
+}
+
+/* ==========================================
+   HEADER
+========================================== */
+
+.permission-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.permission-header h2 {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.permission-header p {
+    margin: 6px 0 0;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+/* ==========================================
+   BUTTONS
+========================================== */
+
+.permission-add-btn,
+.permission-save-btn,
+.permission-edit-btn {
+    border: none;
+    border-radius: 6px;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.permission-add-btn,
+.permission-save-btn,
+.permission-edit-btn {
+    background: #2563eb;
+    color: white;
+}
+
+.permission-add-btn:hover,
+.permission-save-btn:hover,
+.permission-edit-btn:hover {
+    background: #1d4ed8;
+}
+
+.permission-back-btn,
+.permission-cancel-btn {
+    border: 1px solid #d1d5db;
+    background: white;
+    color: #374151;
+    border-radius: 6px;
+    padding: 9px 16px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.permission-back-btn:hover,
+.permission-cancel-btn:hover {
+    background: #f3f4f6;
+}
+
+/* ==========================================
+   LIST CARD
+========================================== */
+
+.permission-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* ==========================================
+   TOOLBAR
+========================================== */
+
+.permission-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.permission-search input {
+    width: 300px;
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    outline: none;
+    font-size: 14px;
+}
+
+.permission-search input:focus {
+    border-color: #2563eb;
+}
+
+.permission-count {
+    font-size: 14px;
+    color: #6b7280;
+}
+
+/* ==========================================
+   TABLE
+========================================== */
+
+.permission-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.permission-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.permission-table th {
+    background: #f8fafc;
+    color: #374151;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: left;
+    padding: 14px 16px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.permission-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 14px;
+    color: #4b5563;
+}
+
+.permission-table tbody tr:hover {
+    background: #f8fafc;
+}
+
+.permission-name {
+    font-weight: 600;
+    color: #111827;
+}
+
+/* ==========================================
+   ACTIONS
+========================================== */
+
+.permission-actions {
+    display: flex;
+    gap: 7px;
+}
+
+.permission-actions button {
+    border: none;
+    border-radius: 5px;
+    padding: 6px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-view {
+    background: #eff6ff;
+    color: #2563eb;
+}
+
+.btn-edit {
+    background: #f0fdf4;
+    color: #16a34a;
+}
+
+.btn-delete {
+    background: #fef2f2;
+    color: #dc2626;
+}
+
+.btn-view:hover {
+    background: #dbeafe;
+}
+
+.btn-edit:hover {
+    background: #dcfce7;
+}
+
+.btn-delete:hover {
+    background: #fee2e2;
+}
+
+/* ==========================================
+   EMPTY
+========================================== */
+
+.permission-empty {
+    text-align: center !important;
+    padding: 40px !important;
+    color: #9ca3af !important;
+}
+
+/* ==========================================
+   PAGINATION
+========================================== */
+
+.permission-pagination {
+    padding: 16px;
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid #e5e7eb;
+}
+
+/* ==========================================
+   FORM CARD
+========================================== */
+
+.permission-form-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 28px;
+    max-width: 800px;
+}
+
+.permission-form-group {
+    margin-bottom: 22px;
+}
+
+.permission-form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.permission-form-group label span {
+    color: #dc2626;
+    margin-left: 3px;
+}
+
+.permission-form-group input,
+.permission-form-group textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 11px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    outline: none;
+    font-size: 14px;
+    font-family: inherit;
+}
+
+.permission-form-group input:focus,
+.permission-form-group textarea:focus {
+    border-color: #2563eb;
+}
+
+.permission-form-group textarea {
+    resize: vertical;
+}
+
+.input-error {
+    border-color: #dc2626 !important;
+}
+
+.error-message {
+    display: block;
+    margin-top: 5px;
+    color: #dc2626;
+    font-size: 12px;
+}
+
+.field-hint {
+    display: block;
+    margin-top: 6px;
+    color: #9ca3af;
+    font-size: 12px;
+}
+
+/* ==========================================
+   FORM ACTIONS
+========================================== */
+
+.permission-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #e5e7eb;
+}
+
+/* ==========================================
+   DETAILS
+========================================== */
+
+.permission-details-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    max-width: 900px;
+    overflow: hidden;
+}
+
+.permission-details-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 25px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.permission-details-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 10px;
+    background: #eff6ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+
+.permission-details-header h3 {
+    margin: 0 0 7px;
+    font-size: 20px;
+    color: #111827;
+}
+
+.permission-badge {
+    display: inline-block;
+    padding: 4px 9px;
+    border-radius: 20px;
+    background: #eff6ff;
+    color: #2563eb;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+/* ==========================================
+   DETAILS GRID
+========================================== */
+
+.permission-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+}
+
+.permission-detail-item {
+    padding: 20px 25px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.permission-detail-item:nth-child(odd) {
+    border-right: 1px solid #e5e7eb;
+}
+
+.permission-detail-item label {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #9ca3af;
+    text-transform: uppercase;
+}
+
+.permission-detail-item div {
+    font-size: 15px;
+    color: #111827;
+}
+
+.permission-detail-full {
+    grid-column: 1 / -1;
+    border-right: none !important;
+}
+
+/* ==========================================
+   DETAILS ACTIONS
+========================================== */
+
+.permission-details-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 20px 25px;
+}
+
+/* ==========================================
+   LOADING
+========================================== */
+
+.permission-loading {
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.permission-loading p {
+    color: #6b7280;
+    margin: 0;
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width: 768px) {
+
+    .permission-page {
+        padding: 15px;
+    }
+
+    .permission-header {
+        align-items: flex-start;
+        gap: 15px;
+        flex-direction: column;
+    }
+
+    .permission-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+
+    .permission-search input {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .permission-actions {
+        flex-wrap: wrap;
+    }
+
+    .permission-details-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .permission-detail-item:nth-child(odd) {
+        border-right: none;
+    }
+
+    .permission-detail-full {
+        grid-column: auto;
+    }
+
+    .permission-form-actions,
+    .permission-details-actions {
+        flex-direction: column;
+    }
+
+    .permission-form-actions button,
+    .permission-details-actions button {
+        width: 100%;
+    }
+}
+
+
+/* ===== Permission page ===== */
+.permission-page {
+    padding: 24px;
+    min-width: 0;
+    color: #172033;
+}
+
+/* ===== Header border box ===== */
+.permission-header-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 22px 24px;
+    margin-bottom: 22px;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04);
+}
+
+.permission-header-box h2 {
+    margin: 5px 0 6px;
+    font-size: 25px;
+    font-weight: 750;
+    color: #172033;
+}
+
+.permission-header-box p {
+    margin: 0;
+    color: #64748b;
+    font-size: 14px;
+}
+
+.permission-eyebrow {
+    color: #6366f1;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.permission-add-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-shrink: 0;
+    padding: 12px 17px;
+    border: 0;
+    border-radius: 10px;
+    color: #fff;
+    background: linear-gradient(135deg, #4f46e5, #6366f1);
+    font-size: 14px;
+    font-weight: 650;
+    cursor: pointer;
+    box-shadow: 0 5px 12px rgba(79, 70, 229, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.permission-add-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(79, 70, 229, 0.28);
+}
+
+/* ===== Summary cards ===== */
+.permission-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    margin-bottom: 24px;
+}
+
+.permission-stat-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    min-width: 0;
+    padding: 21px;
+    background: #fff;
+    border: 1px solid #e5eaf2;
+    border-radius: 15px;
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.035);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.permission-stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 9px 22px rgba(15, 23, 42, 0.08);
+}
+
+.permission-stat-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 49px;
+    height: 49px;
+    flex-shrink: 0;
+    border-radius: 13px;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.permission-stat-card.total .permission-stat-icon {
+    color: #4f46e5;
+    background: #eef2ff;
+}
+
+.permission-stat-card.view .permission-stat-icon {
+    color: #0284c7;
+    background: #e0f2fe;
+}
+
+.permission-stat-card.create .permission-stat-icon {
+    color: #059669;
+    background: #d1fae5;
+}
+
+.permission-stat-card.edit .permission-stat-icon {
+    color: #d97706;
+    background: #fef3c7;
+}
+
+.permission-stat-card p {
+    margin: 0 0 5px;
+    color: #64748b;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.permission-stat-card h3 {
+    margin: 0 0 4px;
+    color: #172033;
+    font-size: 27px;
+    font-weight: 750;
+}
+
+.permission-stat-card span {
+    color: #94a3b8;
+    font-size: 11px;
+}
+
+/* ===== Table card and toolbar ===== */
+.permission-card {
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 15px;
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.035);
+}
+
+.permission-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 22px 24px;
+    border-bottom: 1px solid #edf0f5;
+}
+
+.permission-toolbar h3 {
+    margin: 0 0 5px;
+    font-size: 17px;
+    font-weight: 750;
+}
+
+.permission-toolbar p {
+    margin: 0;
+    color: #94a3b8;
+    font-size: 12px;
+}
+
+.permission-toolbar-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.permission-search-input {
+    width: 230px;
+    max-width: 100%;
+    padding: 10px 13px;
+    border: 1px solid #dbe2ea;
+    border-radius: 9px;
+    outline: none;
+    font-size: 13px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.permission-search-input:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+.permission-total-pill {
+    padding: 9px 12px;
+    color: #4338ca;
+    background: #eef2ff;
+    border-radius: 8px;
+    white-space: nowrap;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.permission-refresh-btn {
+    width: 37px;
+    height: 37px;
+    border: 1px solid #e2e8f0;
+    border-radius: 9px;
+    color: #475569;
+    background: #fff;
+    cursor: pointer;
+    font-size: 23px;
+}
+
+.permission-refresh-btn:hover {
+    color: #4f46e5;
+    background: #f5f6ff;
+}
+
+/* ===== Table ===== */
+.permission-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.permission-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.permission-table thead {
+    background: #f8fafc;
+}
+
+.permission-table th {
+    padding: 14px 20px;
+    color: #64748b;
+    font-size: 11px;
+    font-weight: 750;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.permission-table td {
+    padding: 16px 20px;
+    border-top: 1px solid #f0f2f6;
+    color: #475569;
+    font-size: 13px;
+    vertical-align: middle;
+}
+
+.permission-table tbody tr:hover {
+    background: #fafbff;
+}
+
+.permission-id {
+    color: #64748b;
+    font-weight: 650;
+}
+
+.permission-name {
+    display: inline-block;
+    padding: 6px 10px;
+    color: #4338ca;
+    background: #eef2ff;
+    border: 1px solid #e0e7ff;
+    border-radius: 7px;
+    font-weight: 650;
+    white-space: nowrap;
+}
+
+.permission-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.permission-actions button {
+    padding: 7px 10px;
+    border: 1px solid transparent;
+    border-radius: 7px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.permission-actions .btn-view {
+    color: #0369a1;
+    background: #e0f2fe;
+}
+
+.permission-actions .btn-edit {
+    color: #6d28d9;
+    background: #ede9fe;
+}
+
+.permission-actions .btn-delete {
+    color: #b91c1c;
+    background: #fee2e2;
+}
+
+.permission-actions .btn-view:hover {
+    background: #bae6fd;
+}
+
+.permission-actions .btn-edit:hover {
+    background: #ddd6fe;
+}
+
+.permission-actions .btn-delete:hover {
+    background: #fecaca;
+}
+
+.permission-empty {
+    padding: 38px 20px !important;
+    color: #94a3b8 !important;
+    text-align: center;
+}
+
+.permission-pagination {
+    display: flex;
+    justify-content: flex-end;
+    padding: 18px 24px;
+    border-top: 1px solid #edf0f5;
+}
+
+/* ===== Modal overlay ===== */
+.permission-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow-y: auto;
+    background: rgba(15, 23, 42, 0.58);
+    backdrop-filter: blur(4px);
+    animation: permissionOverlayIn 0.18s ease-out;
+}
+
+.permission-modal {
+    width: 100%;
+    max-width: 550px;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    background: #fff;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: 17px;
+    box-shadow: 0 24px 80px rgba(15, 23, 42, 0.25);
+    animation: permissionModalIn 0.22s ease-out;
+}
+
+.permission-modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 23px 25px;
+    border-bottom: 1px solid #edf0f5;
+}
+
+.permission-modal-header h3 {
+    margin: 7px 0 5px;
+    color: #172033;
+    font-size: 21px;
+    font-weight: 750;
+}
+
+.permission-modal-header p {
+    margin: 0;
+    color: #64748b;
+    font-size: 13px;
+}
+
+.permission-modal-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    flex-shrink: 0;
+    border: 0;
+    border-radius: 9px;
+    color: #64748b;
+    background: #f1f5f9;
+    cursor: pointer;
+    font-size: 25px;
+    line-height: 1;
+}
+
+.permission-modal-close:hover {
+    color: #b91c1c;
+    background: #fee2e2;
+}
+
+.permission-modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 24px 25px;
+}
+
+.permission-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.permission-form-group label {
+    color: #334155;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.permission-form-group label span {
+    color: #dc2626;
+}
+
+.permission-form-group input,
+.permission-form-group textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 13px;
+    border: 1px solid #dbe2ea;
+    border-radius: 9px;
+    outline: none;
+    color: #172033;
+    background: #fff;
+    font: inherit;
+    font-size: 13px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.permission-form-group input:focus,
+.permission-form-group textarea:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+.permission-form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.permission-form-group .input-error {
+    border-color: #ef4444;
+}
+
+.error-message {
+    color: #dc2626;
+    font-size: 12px;
+}
+
+.field-hint {
+    color: #94a3b8;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.permission-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 18px 25px 23px;
+    border-top: 1px solid #edf0f5;
+}
+
+.permission-form-actions button {
+    padding: 11px 16px;
+    border: 0;
+    border-radius: 9px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.permission-cancel-btn {
+    color: #475569;
+    background: #f1f5f9;
+}
+
+.permission-save-btn {
+    color: #fff;
+    background: #4f46e5;
+}
+
+.permission-save-btn:hover {
+    background: #4338ca;
+}
+
+.permission-form-actions button:disabled {
+    cursor: not-allowed;
+    opacity: 0.65;
+}
+
+.permission-view-body {
+    padding: 20px 25px;
+}
+
+.permission-view-body p {
+    margin: 0 0 15px;
+    color: #475569;
+    font-size: 14px;
+    overflow-wrap: anywhere;
+}
+
+.permission-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+    padding: 35px;
+}
+
+.permission-loading p {
+    margin: 0;
+    color: #64748b;
+}
+
+/* ===== Animations ===== */
+@keyframes permissionOverlayIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes permissionModalIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ===== Responsive layout ===== */
+@media (max-width: 1100px) {
+    .permission-stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 700px) {
+    .permission-page {
+        padding: 14px;
+    }
+
+    .permission-header-box {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 18px;
+    }
+
+    .permission-header-box h2 {
+        font-size: 21px;
+    }
+
+    .permission-stats-grid {
+        gap: 12px;
+    }
+
+    .permission-stat-card {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+        padding: 14px;
+    }
+
+    .permission-toolbar {
+        align-items: stretch;
+        flex-direction: column;
+        padding: 18px;
+    }
+
+    .permission-toolbar-right {
+        flex-wrap: wrap;
+    }
+
+    .permission-search-input {
+        width: 100%;
+        flex: 1 1 180px;
+    }
+
+    .permission-table th,
+    .permission-table td {
+        padding: 12px;
+    }
+
+    .permission-modal-overlay {
+        align-items: flex-start;
+        padding: 12px;
+    }
+
+    .permission-modal {
+        max-height: calc(100vh - 24px);
+        margin: auto 0;
+    }
+
+    .permission-modal-header,
+    .permission-modal-body {
+        padding: 18px;
+    }
+
+    .permission-form-actions {
+        padding: 15px 18px 18px;
+    }
+}
+
+@media (max-width: 420px) {
+    .permission-stats-grid {
+        grid-template-columns: 1fr;
+    }
+}

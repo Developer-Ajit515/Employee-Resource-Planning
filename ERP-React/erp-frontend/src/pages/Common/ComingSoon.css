@@ -1,0 +1,91 @@
+.coming-soon {
+    min-height: 65vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: column;
+
+    text-align: center;
+
+    padding: 40px;
+}
+
+
+.coming-soon-icon {
+    width: 80px;
+    height: 80px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 20px;
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6366f1,
+            #8b5cf6
+        );
+
+    color: #ffffff;
+
+    font-size: 30px;
+
+    box-shadow:
+        0 15px 35px
+        rgba(99,102,241,0.25);
+
+    animation:
+        comingFloat 2.5s ease-in-out infinite;
+}
+
+
+.coming-soon h1 {
+    margin: 0;
+
+    color:
+        #0f172a;
+
+    font-size: 28px;
+
+    font-weight: 800;
+}
+
+
+.coming-soon p {
+    margin:
+        10px 0 5px;
+
+    color:
+        #475569;
+
+    font-size: 15px;
+}
+
+
+.coming-soon span {
+    color:
+        #94a3b8;
+
+    font-size: 13px;
+}
+
+
+@keyframes comingFloat {
+
+    0%,
+    100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-8px);
+    }
+}

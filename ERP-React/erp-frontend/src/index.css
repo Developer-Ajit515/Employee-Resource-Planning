@@ -1,0 +1,46 @@
+.auth-loading {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: column;
+
+    gap: 14px;
+
+    background:
+        #f8fafc;
+
+    color:
+        #475569;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+.auth-spinner {
+    width: 38px;
+    height: 38px;
+
+    border-radius: 50%;
+
+    border:
+        3px solid #e2e8f0;
+
+    border-top-color:
+        #6366f1;
+
+    animation:
+        erpSpin 0.8s linear infinite;
+}
+
+
+@keyframes erpSpin {
+
+    to {
+        transform:
+            rotate(360deg);
+    }
+}

@@ -1,0 +1,435 @@
+/* =========================================================
+   ROLE MANAGEMENT PAGE
+   Works with the current RoleList.jsx
+   ========================================================= */
+
+.p-6 {
+    padding: 24px;
+}
+
+.mb-6 {
+    margin-bottom: 24px;
+}
+
+.mb-5 {
+    margin-bottom: 20px;
+}
+
+.mb-4 {
+    margin-bottom: 16px;
+}
+
+.mb-3 {
+    margin-bottom: 12px;
+}
+
+.mb-2 {
+    margin-bottom: 8px;
+}
+
+/* =========================================================
+   PAGE BACKGROUND
+   ========================================================= */
+
+.p-6 {
+    min-height: 100%;
+    background: #f8fafc;
+    color: #0f172a;
+    box-sizing: border-box;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.flex.justify-between.items-center.mb-6 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.text-3xl.font-bold {
+    margin: 0;
+    font-size: 30px;
+    line-height: 1.2;
+    font-weight: 700;
+    color: #0f172a;
+    letter-spacing: -0.5px;
+}
+
+/* =========================================================
+   ROLE FORM CARD
+   ========================================================= */
+
+.bg-white.shadow-lg.rounded-lg.p-6.mb-6 {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+    padding: 26px;
+    margin-bottom: 24px;
+
+    box-shadow:
+        0 4px 6px rgba(15, 23, 42, 0.04),
+        0 12px 30px rgba(15, 23, 42, 0.06);
+
+    animation: roleCardEnter 0.45s ease-out;
+}
+
+/* =========================================================
+   FORM TITLE
+   ========================================================= */
+
+.text-xl.font-semibold.mb-4 {
+    margin-top: 0;
+    margin-bottom: 20px;
+
+    font-size: 20px;
+    line-height: 1.3;
+    font-weight: 700;
+
+    color: #0f172a;
+}
+
+/* =========================================================
+   LABELS
+   ========================================================= */
+
+.block.font-medium.mb-2,
+.block.font-medium.mb-3 {
+    display: block;
+
+    color: #334155;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* =========================================================
+   INPUT + SELECT
+   ========================================================= */
+
+.w-full.border.rounded-lg.p-2 {
+    width: 100%;
+    height: 44px;
+
+    box-sizing: border-box;
+
+    padding: 0 14px;
+
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+
+    background: #ffffff;
+    color: #0f172a;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.w-full.border.rounded-lg.p-2::placeholder {
+    color: #94a3b8;
+}
+
+.w-full.border.rounded-lg.p-2:hover {
+    border-color: #94a3b8;
+}
+
+.w-full.border.rounded-lg.p-2:focus {
+    border-color: #6366f1;
+
+    box-shadow:
+        0 0 0 3px rgba(99, 102, 241, 0.12);
+
+    background: #ffffff;
+}
+
+/* =========================================================
+   PERMISSIONS GRID
+   ========================================================= */
+
+.grid.grid-cols-2.md\:grid-cols-4.gap-3 {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 12px;
+}
+
+/* =========================================================
+   PERMISSION ITEM
+   ========================================================= */
+
+.flex.items-center.gap-2.border.rounded-lg.p-2.cursor-pointer {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    min-height: 48px;
+
+    padding: 10px 13px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+
+    background: #f8fafc;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.flex.items-center.gap-2.border.rounded-lg.p-2.cursor-pointer:hover {
+    background: #f1f5f9;
+
+    border-color: #a5b4fc;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 5px 12px rgba(15, 23, 42, 0.07);
+}
+
+/* =========================================================
+   CHECKBOX
+   ========================================================= */
+
+.flex.items-center.gap-2.border.rounded-lg.p-2.cursor-pointer input[type="checkbox"] {
+    width: 17px;
+    height: 17px;
+
+    flex-shrink: 0;
+
+    margin: 0;
+
+    accent-color: #4f46e5;
+
+    cursor: pointer;
+}
+
+/* =========================================================
+   PERMISSION TEXT
+   ========================================================= */
+
+.flex.items-center.gap-2.border.rounded-lg.p-2.cursor-pointer span {
+    color: #334155;
+
+    font-size: 13px;
+    font-weight: 500;
+
+    line-height: 1.4;
+
+    user-select: none;
+}
+
+/* =========================================================
+   SELECTED PERMISSION
+   ========================================================= */
+
+.flex.items-center.gap-2.border.rounded-lg.p-2.cursor-pointer:has(
+    input[type="checkbox"]:checked
+) {
+    background: #eef2ff;
+
+    border-color: #818cf8;
+
+    box-shadow:
+        0 3px 10px rgba(79, 70, 229, 0.08);
+}
+
+.flex.items-center.gap-2.border.rounded-lg.p-2.cursor-pointer:has(
+    input[type="checkbox"]:checked
+) span {
+    color: #4338ca;
+    font-weight: 600;
+}
+
+/* =========================================================
+   BUTTON CONTAINER
+   ========================================================= */
+
+.flex.gap-3 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* =========================================================
+   SAVE BUTTON
+   ========================================================= */
+
+.bg-blue-600.text-white.px-6.py-2.rounded-lg {
+    min-width: 125px;
+    height: 44px;
+
+    padding: 0 20px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #4f46e5;
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 4px 10px rgba(79, 70, 229, 0.20);
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.bg-blue-600.text-white.px-6.py-2.rounded-lg:hover {
+    background: #4338ca;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 7px 16px rgba(79, 70, 229, 0.28);
+}
+
+.bg-blue-600.text-white.px-6.py-2.rounded-lg:active {
+    transform: translateY(0);
+}
+
+/* =========================================================
+   RESET BUTTON
+   ========================================================= */
+
+.bg-gray-500.text-white.px-6.py-2.rounded-lg {
+    min-width: 110px;
+    height: 44px;
+
+    padding: 0 20px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #64748b;
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.bg-gray-500.text-white.px-6.py-2.rounded-lg:hover {
+    background: #475569;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 6px 14px rgba(71, 85, 105, 0.22);
+}
+
+.bg-gray-500.text-white.px-6.py-2.rounded-lg:active {
+    transform: translateY(0);
+}
+
+/* =========================================================
+   ANIMATION
+   ========================================================= */
+
+@keyframes roleCardEnter {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .grid.grid-cols-2.md\:grid-cols-4.gap-3 {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+    }
+}
+
+/* =========================================================
+   SMALL TABLET
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+    .p-6 {
+        padding: 18px;
+    }
+
+    .grid.grid-cols-2.md\:grid-cols-4.gap-3 {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .text-3xl.font-bold {
+        font-size: 26px;
+    }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .p-6 {
+        padding: 14px;
+    }
+
+    .text-3xl.font-bold {
+        font-size: 23px;
+    }
+
+    .bg-white.shadow-lg.rounded-lg.p-6.mb-6 {
+        padding: 18px;
+        border-radius: 14px;
+    }
+
+    .grid.grid-cols-2.md\:grid-cols-4.gap-3 {
+        grid-template-columns: 1fr;
+    }
+
+    .flex.gap-3 {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .bg-blue-600.text-white.px-6.py-2.rounded-lg,
+    .bg-gray-500.text-white.px-6.py-2.rounded-lg {
+        width: 100%;
+    }
+}

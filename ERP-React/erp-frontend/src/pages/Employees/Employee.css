@@ -1,0 +1,1228 @@
+/* =========================================================
+   EMPLOYEE MANAGEMENT
+========================================================= */
+
+.employee-page {
+    min-height: 100%;
+    width: 100%;
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
+
+.employee-container {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.employee-header {
+    position: relative;
+
+    padding: 28px 30px;
+    margin-bottom: 24px;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff 0%,
+            #f8fafc 100%
+        );
+
+    box-shadow:
+        0 4px 18px rgba(15, 23, 42, 0.05);
+
+    overflow: hidden;
+}
+
+.employee-header::after {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    right: -70px;
+    top: -80px;
+
+    border-radius: 50%;
+
+    background: rgba(99, 102, 241, 0.08);
+}
+
+.employee-header h1 {
+    position: relative;
+    z-index: 1;
+
+    margin: 0 0 7px;
+
+    color: #0f172a;
+
+    font-size: 28px;
+    font-weight: 750;
+
+    line-height: 1.2;
+}
+
+.employee-header p {
+    position: relative;
+    z-index: 1;
+
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   EMPLOYEE CONTENT GRID
+========================================================= */
+
+ 
+/* Employee page full width */
+.employee-page {
+    width: 100%;
+    min-width: 0;
+}
+
+.employee-container {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    min-width: 0;
+}
+
+/* Form modal mein hai, isliye single column */
+.employee-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    width: 100%;
+    min-width: 0;
+    gap: 20px;
+    align-items: start;
+}
+
+/* Employee table card full width */
+.employee-table-card {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.employee-table-wrapper {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.employee-table {
+    width: 100%;
+    min-width: 1000px;
+    border-collapse: collapse;
+    table-layout: auto;
+}
+
+/* Keep table content readable */
+.employee-table th,
+.employee-table td {
+    padding: 12px 14px;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+
+.employee-table th {
+    font-size: 11px;
+}
+
+.employee-table td {
+    font-size: 12px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .employee-table-header {
+        padding: 16px;
+        flex-wrap: wrap;
+    }
+
+    .employee-table {
+        min-width: 1000px;
+    }
+}
+
+
+
+/* =========================================================
+   FORM CARD
+========================================================= */
+
+.employee-form-card,
+.employee-table-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 4px 18px rgba(15, 23, 42, 0.04);
+}
+
+.employee-form-card {
+    padding: 24px;
+
+    position: sticky;
+    top: 90px;
+}
+
+
+/* =========================================================
+   CARD HEADER
+========================================================= */
+
+.employee-card-header {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 22px;
+}
+
+.employee-card-header h2 {
+    margin: 0;
+
+    color: #0f172a;
+
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.employee-card-header p {
+    margin: 5px 0 0;
+
+    color: #94a3b8;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.employee-form {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 16px;
+}
+
+
+/* =========================================================
+   FORM GROUP
+========================================================= */
+
+.employee-form-group {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+.employee-form-group label {
+    color: #334155;
+
+    font-size: 12px;
+    font-weight: 650;
+}
+
+
+/* =========================================================
+   INPUT
+========================================================= */
+
+.employee-form input,
+.employee-form select {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 11px 13px;
+
+    border: 1px solid #dbe3ee;
+    border-radius: 10px;
+
+    outline: none;
+
+    background: #ffffff;
+
+    color: #0f172a;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.employee-form input::placeholder {
+    color: #a1acba;
+}
+
+.employee-form input:hover {
+    border-color: #cbd5e1;
+}
+
+.employee-form input:focus,
+.employee-form select:focus {
+    border-color: #6366f1;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 0 3px rgba(99, 102, 241, 0.10);
+}
+
+
+/* =========================================================
+   TWO COLUMN INPUTS
+========================================================= */
+
+.employee-input-row {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 12px;
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.employee-status {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 12px 14px;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+
+    background: #f8fafc;
+}
+
+.employee-status-text {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+.employee-status-text strong {
+    color: #334155;
+
+    font-size: 12px;
+}
+
+.employee-status-text span {
+    color: #94a3b8;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   TOGGLE
+========================================================= */
+
+.employee-toggle {
+    position: relative;
+
+    width: 42px;
+    height: 23px;
+
+    flex-shrink: 0;
+}
+
+.employee-toggle input {
+    opacity: 0;
+
+    width: 0;
+    height: 0;
+}
+
+.employee-toggle-slider {
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: 30px;
+
+    background: #cbd5e1;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease;
+}
+
+.employee-toggle-slider::before {
+    content: "";
+
+    position: absolute;
+
+    width: 17px;
+    height: 17px;
+
+    left: 3px;
+    top: 3px;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 1px 4px rgba(0, 0, 0, 0.2);
+
+    transition:
+        transform 0.2s ease;
+}
+
+.employee-toggle input:checked
++ .employee-toggle-slider {
+    background: #10b981;
+}
+
+.employee-toggle input:checked
++ .employee-toggle-slider::before {
+    transform: translateX(19px);
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.employee-form-actions {
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    gap: 10px;
+
+    margin-top: 5px;
+}
+
+.employee-btn {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    padding: 11px 14px;
+
+    border: 0;
+    border-radius: 10px;
+
+    font-family: inherit;
+
+    font-size: 12px;
+    font-weight: 650;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.employee-btn:hover {
+    transform: translateY(-1px);
+}
+
+.employee-btn-primary {
+    background: #0f172a;
+
+    color: #ffffff;
+
+    box-shadow:
+        0 4px 10px rgba(15, 23, 42, 0.15);
+}
+
+.employee-btn-primary:hover {
+    background: #1e293b;
+}
+
+.employee-btn-secondary {
+    background: #f1f5f9;
+
+    color: #334155;
+}
+
+.employee-btn-secondary:hover {
+    background: #e2e8f0;
+}
+
+
+/* =========================================================
+   TABLE CARD
+========================================================= */
+
+.employee-table-card {
+    min-width: 0;
+
+    overflow: hidden;
+}
+
+.employee-table-header {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 22px 24px;
+
+    border-bottom: 1px solid #eef2f7;
+}
+
+.employee-table-title h2 {
+    margin: 0;
+
+    color: #0f172a;
+
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.employee-table-title p {
+    margin: 5px 0 0;
+
+    color: #94a3b8;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   REFRESH BUTTON
+========================================================= */
+
+.employee-refresh-btn {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 9px 13px;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 9px;
+
+    background: #ffffff;
+
+    color: #475569;
+
+    font-family: inherit;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.employee-refresh-btn:hover {
+    background: #f8fafc;
+
+    border-color: #cbd5e1;
+}
+
+
+/* =========================================================
+   TABLE WRAPPER
+========================================================= */
+
+.employee-table-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.employee-table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    min-width: 900px;
+}
+
+.employee-table thead {
+    background: #f8fafc;
+}
+
+.employee-table th {
+    padding: 13px 15px;
+
+    border-bottom: 1px solid #e2e8f0;
+
+    color: #64748b;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    text-align: left;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+
+    white-space: nowrap;
+}
+
+.employee-table td {
+    padding: 14px 15px;
+
+    border-bottom: 1px solid #f1f5f9;
+
+    color: #475569;
+
+    font-size: 12px;
+
+    white-space: nowrap;
+}
+
+.employee-table tbody tr {
+    transition:
+        background 0.15s ease;
+}
+
+.employee-table tbody tr:hover {
+    background: #f8fafc;
+}
+
+.employee-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* =========================================================
+   EMPLOYEE NAME
+========================================================= */
+
+.employee-name {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+.employee-avatar {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 9px;
+
+    background: #eef2ff;
+
+    color: #6366f1;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.employee-name-info {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+.employee-name-info strong {
+    color: #0f172a;
+
+    font-size: 12px;
+}
+
+.employee-name-info span {
+    color: #94a3b8;
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   DEPARTMENT
+========================================================= */
+
+.employee-department {
+    display: inline-flex;
+
+    padding: 5px 8px;
+
+    border-radius: 6px;
+
+    background: #f1f5f9;
+
+    color: #475569;
+
+    font-size: 10px;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   STATUS BADGE
+========================================================= */
+
+.employee-status-badge {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.employee-status-badge::before {
+    content: "";
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+}
+
+.employee-status-active {
+    background: #dcfce7;
+
+    color: #15803d;
+}
+
+.employee-status-active::before {
+    background: #22c55e;
+}
+
+.employee-status-inactive {
+    background: #fee2e2;
+
+    color: #b91c1c;
+}
+
+.employee-status-inactive::before {
+    background: #ef4444;
+}
+
+
+/* =========================================================
+   ACTION BUTTONS
+========================================================= */
+
+.employee-actions {
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+}
+
+.employee-action-btn {
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 0;
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-size: 11px;
+
+    transition:
+        transform 0.15s ease,
+        background 0.2s ease;
+}
+
+.employee-action-btn:hover {
+    transform: translateY(-1px);
+}
+
+.employee-edit {
+    background: #eff6ff;
+
+    color: #2563eb;
+}
+
+.employee-edit:hover {
+    background: #dbeafe;
+}
+
+.employee-delete {
+    background: #fef2f2;
+
+    color: #dc2626;
+}
+
+.employee-delete:hover {
+    background: #fee2e2;
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.employee-loading {
+    min-height: 250px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    color: #94a3b8;
+
+    font-size: 13px;
+}
+
+.employee-loading-spinner {
+    width: 25px;
+    height: 25px;
+
+    border: 3px solid #e2e8f0;
+
+    border-top-color: #6366f1;
+
+    border-radius: 50%;
+
+    animation:
+        employeeSpin 0.8s linear infinite;
+}
+
+@keyframes employeeSpin {
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.employee-empty {
+    min-height: 250px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    color: #94a3b8;
+
+    text-align: center;
+}
+
+.employee-empty-icon {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 5px;
+
+    border-radius: 14px;
+
+    background: #f1f5f9;
+
+    color: #94a3b8;
+}
+
+.employee-empty strong {
+    color: #64748b;
+
+    font-size: 14px;
+}
+
+.employee-empty span {
+    color: #94a3b8;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   FORM ERROR / SUCCESS
+========================================================= */
+
+.employee-message {
+    padding: 10px 12px;
+
+    border-radius: 9px;
+
+    font-size: 12px;
+}
+
+.employee-message-error {
+    border: 1px solid #fecaca;
+
+    background: #fef2f2;
+
+    color: #b91c1c;
+}
+
+.employee-message-success {
+    border: 1px solid #bbf7d0;
+
+    background: #f0fdf4;
+
+    color: #15803d;
+}
+
+
+/* =========================================================
+   RESPONSIVE - 1200px
+========================================================= */
+
+@media (max-width: 1200px) {
+
+    .employee-layout {
+        grid-template-columns:
+            320px
+            minmax(0, 1fr);
+
+        gap: 18px;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE - 950px
+========================================================= */
+
+@media (max-width: 950px) {
+
+    .employee-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .employee-form-card {
+        position: static;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE - 600px
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .employee-header {
+        padding: 22px 20px;
+
+        border-radius: 14px;
+    }
+
+    .employee-header h1 {
+        font-size: 23px;
+    }
+
+    .employee-header p {
+        font-size: 12px;
+    }
+
+
+    .employee-form-card,
+    .employee-table-card {
+        border-radius: 14px;
+    }
+
+
+    .employee-form-card {
+        padding: 18px;
+    }
+
+
+    .employee-table-header {
+        padding: 17px;
+
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .employee-input-row {
+        grid-template-columns: 1fr;
+    }
+
+
+    .employee-form-actions {
+        grid-template-columns: 1fr;
+    }
+
+
+    .employee-refresh-btn {
+        width: 100%;
+
+        justify-content: center;
+    }
+
+}
+
+
+/* Header with Add Employee button */
+.employee-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.employee-add-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-shrink: 0;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 10px;
+    background: #4f46e5;
+    color: #fff;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 650;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.employee-add-btn:hover {
+    background: #4338ca;
+    transform: translateY(-1px);
+}
+
+.employee-add-btn span {
+    font-size: 20px;
+    line-height: 1;
+}
+
+/* Modal overlay */
+.employee-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(15, 23, 42, 0.58);
+    backdrop-filter: blur(4px);
+    overflow-y: auto;
+    animation: employeeOverlayIn 0.2s ease;
+}
+
+/* Modal panel */
+.employee-modal {
+    width: 100%;
+    max-width: 680px;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    padding: 26px;
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 24px 70px rgba(15, 23, 42, 0.25);
+    animation: employeeModalIn 0.25s ease;
+}
+
+.employee-modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.employee-modal-header h2 {
+    margin: 0;
+    color: #0f172a;
+    font-size: 21px;
+    font-weight: 750;
+}
+
+.employee-modal-header p {
+    margin: 6px 0 0;
+    color: #64748b;
+    font-size: 13px;
+}
+
+.employee-modal-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    border: none;
+    border-radius: 9px;
+    background: #f1f5f9;
+    color: #475569;
+    font-size: 27px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.employee-modal-close:hover {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+/* Two-column form inside modal */
+.employee-modal .employee-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.employee-modal .employee-form-actions {
+    margin-top: 6px;
+}
+
+.employee-modal .employee-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+@keyframes employeeOverlayIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes employeeModalIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@media (max-width: 600px) {
+    .employee-header-row {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .employee-add-btn {
+        width: 100%;
+    }
+
+    .employee-modal-overlay {
+        align-items: flex-start;
+        padding: 12px;
+    }
+
+    .employee-modal {
+        max-height: calc(100vh - 24px);
+        padding: 18px;
+        border-radius: 14px;
+    }
+
+    .employee-modal .employee-input-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .employee-modal-overlay,
+    .employee-modal {
+        animation: none;
+    }
+}

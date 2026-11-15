@@ -1,0 +1,198 @@
+
+/* =========================================
+   Stripe Payment Cancelled Page
+   ========================================= */
+
+.payment-result-page {
+    min-height: calc(100vh - 70px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px 20px;
+
+    background: #f5f7fb;
+}
+
+/* Card */
+.payment-result-card {
+    width: 100%;
+    max-width: 520px;
+
+    padding: 45px 40px;
+
+    background: #ffffff;
+
+    border: 1px solid #e8ebf0;
+    border-radius: 18px;
+
+    text-align: center;
+
+    box-shadow: 0 12px 35px rgba(15, 23, 42, 0.10);
+}
+
+/* Cancelled Icon */
+.payment-result-icon {
+    width: 82px;
+    height: 82px;
+
+    margin: 0 auto 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #fef2f2;
+    color: #dc2626;
+
+    border: 6px solid #fff1f2;
+
+    font-size: 42px;
+    font-weight: 700;
+}
+
+/* Heading */
+.payment-result-card h2 {
+    margin: 0 0 12px;
+
+    color: #111827;
+
+    font-size: 28px;
+    font-weight: 700;
+}
+
+/* Description */
+.payment-result-card > p {
+    margin: 0 auto 30px;
+
+    max-width: 400px;
+
+    color: #6b7280;
+
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* Buttons Container */
+.payment-result-actions {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-top: 10px;
+}
+
+/* Common Button */
+.payment-result-actions .btn {
+    min-width: 145px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 12px 20px;
+
+    border-radius: 9px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+/* Primary */
+.payment-result-actions .btn-primary {
+    background: #2563eb;
+
+    color: #ffffff;
+
+    border: 1px solid #2563eb;
+}
+
+.payment-result-actions .btn-primary:hover {
+    background: #1d4ed8;
+
+    border-color: #1d4ed8;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 6px 15px rgba(37, 99, 235, 0.25);
+}
+
+/* Secondary */
+.payment-result-actions .btn-secondary {
+    background: #ffffff;
+
+    color: #374151;
+
+    border: 1px solid #d1d5db;
+}
+
+.payment-result-actions .btn-secondary:hover {
+    background: #f9fafb;
+
+    border-color: #9ca3af;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 5px 12px rgba(15, 23, 42, 0.08);
+}
+
+/* Focus */
+.payment-result-actions .btn:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.25);
+
+    outline-offset: 2px;
+}
+
+/* =========================================
+   Responsive
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    .payment-result-page {
+        min-height: calc(100vh - 60px);
+
+        padding: 25px 15px;
+    }
+
+    .payment-result-card {
+        padding: 35px 22px;
+
+        border-radius: 15px;
+    }
+
+    .payment-result-icon {
+        width: 70px;
+        height: 70px;
+
+        font-size: 35px;
+    }
+
+    .payment-result-card h2 {
+        font-size: 24px;
+    }
+
+    .payment-result-actions {
+        flex-direction: column;
+
+        width: 100%;
+    }
+
+    .payment-result-actions .btn {
+        width: 100%;
+    }
+}
+

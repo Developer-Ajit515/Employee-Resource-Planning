@@ -1,0 +1,1754 @@
+
+/* ==========================================
+   Warehouse Page
+========================================== */
+
+.warehouse-page {
+    width: 100%;
+    padding: 24px;
+    background: #f8f9fa;
+    min-height: 100%;
+}
+
+/* ==========================================
+   Header
+========================================== */
+
+.warehouse-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+}
+
+.warehouse-header h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+    color: #212529;
+}
+
+.warehouse-header p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: #6c757d;
+}
+
+.warehouse-header-actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* ==========================================
+   Header Buttons
+========================================== */
+
+.warehouse-header .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-height: 40px;
+}
+
+.warehouse-add-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ==========================================
+   Common Card
+========================================== */
+
+.warehouse-card,
+.warehouse-form-card,
+.warehouse-detail-card {
+    background: #ffffff;
+    border: 1px solid #e3e6ea;
+    border-radius: 8px;
+}
+
+/* ==========================================
+   FORM CARD
+========================================== */
+
+.warehouse-form-card {
+    padding: 28px;
+    max-width: 1200px;
+}
+
+/* ==========================================
+   FORM SECTION
+========================================== */
+
+.warehouse-section {
+    margin-bottom: 28px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.warehouse-section:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.warehouse-section h4 {
+    margin: 0 0 20px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #343a40;
+}
+
+/* ==========================================
+   FORM GRID
+========================================== */
+
+.warehouse-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 24px;
+    row-gap: 18px;
+}
+
+.warehouse-form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.warehouse-form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+/* ==========================================
+   Labels
+========================================== */
+
+.warehouse-form-card label {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #343a40;
+}
+
+.required {
+    color: #dc3545;
+    margin-left: 3px;
+}
+
+/* ==========================================
+   Inputs
+========================================== */
+
+.warehouse-form-card input.form-control,
+.warehouse-form-card select.form-control,
+.warehouse-form-card textarea.form-control {
+    width: 100%;
+    min-height: 42px;
+    padding: 9px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #212529;
+    font-size: 14px;
+    line-height: 1.5;
+    box-shadow: none;
+    transition: border-color 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+.warehouse-form-card textarea.form-control {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* ==========================================
+   Input Focus
+========================================== */
+
+.warehouse-form-card input.form-control:focus,
+.warehouse-form-card select.form-control:focus,
+.warehouse-form-card textarea.form-control:focus {
+    border-color: #86b7fe;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.1);
+}
+
+/* ==========================================
+   Placeholder
+========================================== */
+
+.warehouse-form-card input::placeholder,
+.warehouse-form-card textarea::placeholder {
+    color: #adb5bd;
+    font-size: 13px;
+}
+
+/* ==========================================
+   Address Grid
+========================================== */
+
+.warehouse-address-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 18px;
+}
+
+.warehouse-postal {
+    max-width: 250px;
+}
+
+/* ==========================================
+   Status Section
+========================================== */
+
+.warehouse-status-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 7px;
+}
+
+.warehouse-status-box label {
+    margin: 0;
+    cursor: pointer;
+}
+
+.warehouse-status-box .form-check-input {
+    width: 38px;
+    height: 20px;
+    margin: 0;
+    cursor: pointer;
+}
+
+/* ==========================================
+   Form Actions
+========================================== */
+
+.warehouse-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    margin-top: 5px;
+    padding-top: 22px;
+    border-top: 1px solid #e9ecef;
+}
+
+.warehouse-form-actions .btn {
+    min-width: 120px;
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+}
+
+/* ==========================================
+   Loading
+========================================== */
+
+.warehouse-loading {
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6c757d;
+    font-size: 15px;
+}
+
+/* ==========================================
+   TABLE
+========================================== */
+
+.warehouse-card {
+    overflow: hidden;
+}
+
+.warehouse-table {
+    margin-bottom: 0;
+    vertical-align: middle;
+}
+
+.warehouse-table thead th {
+    padding: 13px 15px;
+    background: #f8f9fa;
+    color: #495057;
+    font-size: 13px;
+    font-weight: 600;
+    border-bottom: 1px solid #dee2e6;
+    white-space: nowrap;
+}
+
+.warehouse-table tbody td {
+    padding: 13px 15px;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+.warehouse-table tbody tr:hover {
+    background: #f8f9fa;
+}
+
+.warehouse-empty {
+    padding: 40px !important;
+    text-align: center;
+    color: #6c757d;
+}
+
+/* ==========================================
+   Status Badge
+========================================== */
+
+.warehouse-status {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.warehouse-status.active {
+    color: #146c43;
+    background: #d1e7dd;
+}
+
+.warehouse-status.inactive {
+    color: #b02a37;
+    background: #f8d7da;
+}
+
+/* ==========================================
+   Action Buttons
+========================================== */
+
+.warehouse-actions {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.warehouse-action {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.warehouse-action.view {
+    color: #0d6efd;
+    background: #e7f1ff;
+}
+
+.warehouse-action.edit {
+    color: #997404;
+    background: #fff3cd;
+}
+
+.warehouse-action.delete {
+    color: #b02a37;
+    background: #f8d7da;
+}
+
+.warehouse-action:hover {
+    transform: translateY(-1px);
+}
+
+/* ==========================================
+   Pagination
+========================================== */
+
+.warehouse-pagination {
+    padding: 15px;
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid #e5e7eb;
+}
+
+/* ==========================================
+   DETAILS
+========================================== */
+
+.warehouse-details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.warehouse-detail-card {
+    padding: 22px;
+}
+
+.warehouse-detail-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 15px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.warehouse-detail-title svg {
+    color: #0d6efd;
+    font-size: 18px;
+}
+
+.warehouse-detail-title h4 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.warehouse-detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 12px 0;
+    border-bottom: 1px solid #f1f3f5;
+}
+
+.warehouse-detail-row:last-child {
+    border-bottom: none;
+}
+
+.warehouse-detail-row > span:first-child {
+    color: #6c757d;
+    font-size: 14px;
+}
+
+.warehouse-detail-row strong {
+    max-width: 65%;
+    text-align: right;
+    font-size: 14px;
+    font-weight: 500;
+    word-break: break-word;
+}
+
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width: 992px) {
+
+    .warehouse-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .warehouse-form-group.full-width {
+        grid-column: auto;
+    }
+
+    .warehouse-address-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .warehouse-details-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .warehouse-page {
+        padding: 15px;
+    }
+
+    .warehouse-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .warehouse-header-actions {
+        width: 100%;
+    }
+
+    .warehouse-header-actions .btn {
+        flex: 1;
+    }
+
+    .warehouse-form-card {
+        padding: 20px;
+    }
+
+    .warehouse-address-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .warehouse-form-actions {
+        flex-direction: column-reverse;
+    }
+
+    .warehouse-form-actions .btn {
+        width: 100%;
+    }
+
+    .warehouse-pagination {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .warehouse-page {
+        padding: 12px;
+    }
+
+    .warehouse-form-card {
+        padding: 15px;
+    }
+
+    .warehouse-detail-row {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .warehouse-detail-row strong {
+        max-width: 100%;
+        text-align: left;
+    }
+}
+
+
+/* ==========================================
+   Warehouse Products
+========================================== */
+
+/* ==========================================
+   Warehouse Products
+========================================== */
+
+.warehouse-products-card {
+    margin-top: 20px;
+    padding: 24px;
+    background: #ffffff;
+    border: 1px solid #e3e6ea;
+    border-radius: 8px;
+}
+
+.warehouse-products-section {
+    width: 100%;
+}
+
+/* ==========================================
+   Products Header
+========================================== */
+
+.warehouse-products-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.warehouse-products-header h4 {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 600;
+    color: #343a40;
+}
+
+.warehouse-products-header p {
+    margin: 5px 0 0;
+    color: #6c757d;
+    font-size: 13px;
+}
+
+.warehouse-products-header .btn {
+    min-height: 40px;
+    padding: 8px 15px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   ADD / EDIT PRODUCT FORM
+========================================== */
+
+.warehouse-product-form {
+    margin-bottom: 22px;
+    padding: 22px;
+    background: #f8f9fa;
+    border: 1px solid #e1e5e9;
+    border-radius: 8px;
+}
+
+/* Remove Bootstrap row negative margins */
+.warehouse-product-form .row {
+    margin-left: 0;
+    margin-right: 0;
+    align-items: flex-end;
+}
+
+/* Product / Quantity / Reorder columns */
+.warehouse-product-form .row > [class*="col-"] {
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+/* First field */
+.warehouse-product-form .row > [class*="col-"]:first-child {
+    padding-left: 0;
+}
+
+/* Last field */
+.warehouse-product-form .row > [class*="col-"]:last-child {
+    padding-right: 0;
+}
+
+
+/* ==========================================
+   Product Form Labels
+========================================== */
+
+.warehouse-product-form label {
+    display: block;
+    margin-bottom: 7px;
+    color: #343a40;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+
+/* ==========================================
+   Product Form Inputs
+========================================== */
+
+.warehouse-product-form .form-control {
+    width: 100%;
+    height: 42px;
+    min-height: 42px;
+    padding: 8px 12px;
+
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+
+    background: #ffffff;
+    color: #212529;
+
+    font-size: 14px;
+    line-height: 1.5;
+
+    box-shadow: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.warehouse-product-form select.form-control {
+    cursor: pointer;
+}
+
+.warehouse-product-form .form-control:focus {
+    border-color: #86b7fe;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.1);
+}
+
+
+/* ==========================================
+   Save Button
+========================================== */
+
+.warehouse-product-form .btn-success {
+    width: 100%;
+    height: 42px;
+    min-height: 42px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 6px;
+
+    font-size: 13px;
+    font-weight: 500;
+}
+
+
+/* ==========================================
+   Product Table
+========================================== */
+
+.warehouse-products-table {
+    margin-bottom: 0;
+    vertical-align: middle;
+}
+
+.warehouse-products-table thead th {
+    padding: 13px 14px;
+
+    background: #f8f9fa;
+    color: #495057;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    border-bottom: 1px solid #dee2e6;
+    white-space: nowrap;
+}
+
+.warehouse-products-table tbody td {
+    padding: 13px 14px;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+.warehouse-products-table tbody tr:hover {
+    background: #fafbfc;
+}
+
+
+/* ==========================================
+   Stock Badge
+========================================== */
+
+.warehouse-stock-badge {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.warehouse-stock-badge.normal {
+    background: #d1e7dd;
+    color: #146c43;
+}
+
+.warehouse-stock-badge.low {
+    background: #f8d7da;
+    color: #b02a37;
+}
+
+
+/* ==========================================
+   Product Actions
+========================================== */
+
+.warehouse-product-actions {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.warehouse-product-actions .warehouse-action {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+
+    border: none;
+    border-radius: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+.warehouse-product-actions .warehouse-action.edit {
+    color: #997404;
+    background: #fff3cd;
+}
+
+.warehouse-product-actions .warehouse-action.delete {
+    color: #b02a37;
+    background: #f8d7da;
+}
+
+.warehouse-product-actions .warehouse-action:hover {
+    transform: translateY(-1px);
+}
+
+
+/* ==========================================
+   Responsive - Tablet
+========================================== */
+
+@media (max-width: 992px) {
+
+    .warehouse-product-form .row {
+        row-gap: 15px;
+    }
+
+    .warehouse-product-form .row > [class*="col-"] {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+}
+
+
+/* ==========================================
+   Responsive - Mobile
+========================================== */
+
+@media (max-width: 768px) {
+
+    .warehouse-products-card {
+        padding: 18px;
+    }
+
+    .warehouse-products-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .warehouse-products-header .btn {
+        width: 100%;
+    }
+
+    .warehouse-product-form {
+        padding: 16px;
+    }
+
+    .warehouse-product-form .row {
+        row-gap: 14px;
+    }
+
+    .warehouse-product-form .btn-success {
+        width: 100%;
+    }
+
+}
+
+
+/* ==========================================
+   Warehouse Header - Bordered Box
+========================================== */
+
+.warehouse-header-bordered {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 22px 24px;
+    margin-bottom: 22px;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+}
+
+.warehouse-heading h2 {
+    margin: 0 0 7px;
+    color: #172033;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.warehouse-heading p {
+    margin: 0;
+    color: #64748b;
+    font-size: 14px;
+}
+
+.warehouse-add-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 11px 17px;
+    border: 0;
+    border-radius: 8px;
+    background: #2563eb;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    white-space: nowrap;
+}
+
+.warehouse-add-btn:hover {
+    background: #1d4ed8;
+}
+
+/* ==========================================
+   Summary Cards
+========================================== */
+
+.warehouse-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin-bottom: 22px;
+}
+
+.warehouse-summary-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-width: 0;
+    padding: 22px;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+}
+
+.warehouse-summary-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    font-size: 21px;
+}
+
+.warehouse-summary-icon.total {
+    background: #dbeafe;
+    color: #2563eb;
+}
+
+.warehouse-summary-icon.active {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.warehouse-summary-icon.inactive {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.warehouse-summary-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+.warehouse-summary-info span {
+    color: #64748b;
+    font-size: 13px;
+}
+
+.warehouse-summary-info strong {
+    color: #172033;
+    font-size: 27px;
+    line-height: 1.2;
+}
+
+/* ==========================================
+   Bordered Warehouse Table
+========================================== */
+
+.warehouse-border-box {
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+}
+
+.warehouse-table-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+    padding: 22px 22px 18px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.warehouse-table-toolbar h3 {
+    margin: 0 0 5px;
+    color: #172033;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.warehouse-table-toolbar p {
+    margin: 0;
+    color: #64748b;
+    font-size: 13px;
+}
+
+.warehouse-filters {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.warehouse-search {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-width: 230px;
+    padding: 10px 12px;
+    border: 1px solid #dbe2ea;
+    border-radius: 8px;
+    color: #64748b;
+}
+
+.warehouse-search input {
+    width: 100%;
+    min-width: 0;
+    border: none;
+    outline: none;
+    color: #172033;
+    background: transparent;
+    font-size: 13px;
+}
+
+.warehouse-status-filter {
+    min-width: 125px;
+    padding: 10px;
+    border: 1px solid #dbe2ea;
+    border-radius: 8px;
+    background: #fff;
+    color: #334155;
+    outline: none;
+}
+
+.warehouse-table {
+    width: 100%;
+    margin-bottom: 0;
+    vertical-align: middle;
+}
+
+.warehouse-table thead th {
+    padding: 15px 16px;
+    border-bottom: 1px solid #e2e8f0;
+    background: #f8fafc;
+    color: #475569;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.warehouse-table tbody td {
+    padding: 15px 16px;
+    border-bottom: 1px solid #edf1f5;
+    color: #475569;
+    font-size: 13px;
+}
+
+.warehouse-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.warehouse-table tbody tr:hover {
+    background: #f8fafc;
+}
+
+.warehouse-name-cell {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    color: #172033;
+    white-space: nowrap;
+}
+
+.warehouse-row-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 9px;
+    background: #eff6ff;
+    color: #2563eb;
+}
+
+.warehouse-location-cell {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    min-width: 100px;
+}
+
+.warehouse-location-cell svg {
+    flex-shrink: 0;
+    color: #94a3b8;
+}
+
+.warehouse-status {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.warehouse-status.active {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.warehouse-status.inactive {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.warehouse-actions {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.warehouse-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid transparent;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.warehouse-action.view {
+    background: #eff6ff;
+    color: #2563eb;
+}
+
+.warehouse-action.edit {
+    background: #fffbeb;
+    color: #b45309;
+}
+
+.warehouse-action.delete {
+    background: #fef2f2;
+    color: #dc2626;
+}
+
+.warehouse-action:hover {
+    filter: brightness(0.96);
+}
+
+.warehouse-action:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.warehouse-empty {
+    padding: 45px 20px !important;
+    text-align: center;
+    color: #64748b !important;
+}
+
+.warehouse-empty svg {
+    font-size: 30px;
+    color: #94a3b8;
+}
+
+.warehouse-empty p {
+    margin: 10px 0 0;
+}
+
+.warehouse-pagination {
+    padding: 15px 20px;
+    border-top: 1px solid #e2e8f0;
+}
+
+/* ==========================================
+   Add Warehouse Modal
+========================================== */
+
+.warehouse-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1050;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(15, 23, 42, 0.58);
+    overflow-y: auto;
+}
+
+.warehouse-modal {
+    width: 100%;
+    max-width: 760px;
+    max-height: calc(100vh - 40px);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    box-shadow: 0 24px 70px rgba(15, 23, 42, 0.25);
+}
+
+.warehouse-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 20px 24px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.warehouse-modal-header h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 6px;
+    color: #172033;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.warehouse-modal-header h3 svg {
+    color: #2563eb;
+}
+
+.warehouse-modal-header p {
+    margin: 0;
+    color: #64748b;
+    font-size: 13px;
+}
+
+.warehouse-modal-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    border: none;
+    border-radius: 8px;
+    background: #f1f5f9;
+    color: #475569;
+    cursor: pointer;
+}
+
+.warehouse-modal-close:hover {
+    background: #e2e8f0;
+}
+
+.warehouse-modal-body {
+    padding: 22px 24px;
+    overflow-y: auto;
+}
+
+.warehouse-form-section {
+    margin-bottom: 23px;
+}
+
+.warehouse-form-section:last-of-type {
+    margin-bottom: 16px;
+}
+
+.warehouse-form-section h4 {
+    margin: 0 0 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e8edf3;
+    color: #334155;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.warehouse-modal-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.warehouse-field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    min-width: 0;
+}
+
+.warehouse-field.full {
+    grid-column: 1 / -1;
+}
+
+.warehouse-field label {
+    color: #475569;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.warehouse-field input,
+.warehouse-field textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #dbe2ea;
+    border-radius: 8px;
+    outline: none;
+    background: #fff;
+    color: #172033;
+    font-size: 13px;
+    box-sizing: border-box;
+}
+
+.warehouse-field input:focus,
+.warehouse-field textarea:focus {
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.warehouse-field textarea {
+    resize: vertical;
+}
+
+.warehouse-modal-status {
+    padding-top: 4px;
+}
+
+.warehouse-modal-status label {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: #334155;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.warehouse-modal-status input {
+    width: 16px;
+    height: 16px;
+    accent-color: #2563eb;
+}
+
+.warehouse-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 24px;
+    border-top: 1px solid #e2e8f0;
+    background: #fff;
+}
+
+.warehouse-cancel-btn,
+.warehouse-save-btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.warehouse-cancel-btn {
+    border: 1px solid #dbe2ea;
+    background: #fff;
+    color: #475569;
+}
+
+.warehouse-save-btn {
+    border: 1px solid #2563eb;
+    background: #2563eb;
+    color: #fff;
+}
+
+.warehouse-save-btn:hover {
+    background: #1d4ed8;
+}
+
+.warehouse-cancel-btn:disabled,
+.warehouse-save-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* ==========================================
+   Responsive
+========================================== */
+
+@media (max-width: 900px) {
+    .warehouse-summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .warehouse-table-toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .warehouse-filters {
+        width: 100%;
+    }
+
+    .warehouse-search {
+        flex: 1;
+    }
+}
+
+@media (max-width: 600px) {
+    .warehouse-header-bordered {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 18px;
+    }
+
+    .warehouse-add-btn {
+        width: 100%;
+    }
+
+    .warehouse-summary-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .warehouse-summary-card {
+        padding: 17px;
+    }
+
+    .warehouse-filters {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .warehouse-search {
+        min-width: 0;
+    }
+
+    .warehouse-status-filter {
+        width: 100%;
+    }
+
+    .warehouse-modal-overlay {
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    .warehouse-modal {
+        max-height: calc(100vh - 20px);
+    }
+
+    .warehouse-modal-header,
+    .warehouse-modal-body {
+        padding: 17px;
+    }
+
+    .warehouse-modal-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .warehouse-field.full {
+        grid-column: auto;
+    }
+
+    .warehouse-modal-footer {
+        padding: 14px 17px;
+    }
+}
+
+/* ==========================================
+   Warehouse Add / Edit Modal - Scroll Fix
+========================================== */
+
+.warehouse-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(15, 23, 42, 0.6);
+    overflow-y: auto;
+}
+
+.warehouse-modal {
+    width: 100%;
+    max-width: 760px;
+    max-height: calc(100vh - 40px);
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    min-height: 0;
+}
+
+/* Modal header stays visible */
+.warehouse-modal-header {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 24px;
+    border-bottom: 1px solid #e5e7eb;
+    background: #ffffff;
+}
+
+.warehouse-modal-header h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.warehouse-modal-header p {
+    margin: 6px 0 0;
+    color: #6b7280;
+    font-size: 13px;
+}
+
+.warehouse-modal-close {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 8px;
+    background: #f3f4f6;
+    color: #374151;
+    cursor: pointer;
+}
+
+.warehouse-modal-close:hover {
+    background: #e5e7eb;
+}
+
+/* Form must shrink inside the modal */
+.warehouse-modal form {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+}
+
+/* Main scrollable area */
+.warehouse-modal-body {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 20px 24px;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: #9ca3af #f3f4f6;
+}
+
+.warehouse-modal-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.warehouse-modal-body::-webkit-scrollbar-track {
+    background: #f3f4f6;
+    border-radius: 8px;
+}
+
+.warehouse-modal-body::-webkit-scrollbar-thumb {
+    background: #9ca3af;
+    border-radius: 8px;
+}
+
+.warehouse-modal-body::-webkit-scrollbar-thumb:hover {
+    background: #6b7280;
+}
+
+/* Form sections */
+.warehouse-form-section {
+    margin-bottom: 24px;
+}
+
+.warehouse-form-section h4 {
+    margin: 0 0 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e5e7eb;
+    color: #1f2937;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.warehouse-modal-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.warehouse-field {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    gap: 7px;
+}
+
+.warehouse-field.full {
+    grid-column: 1 / -1;
+}
+
+.warehouse-field label {
+    color: #374151;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.warehouse-field input,
+.warehouse-field textarea,
+.warehouse-field select {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 7px;
+    background: #ffffff;
+    color: #111827;
+    font-size: 14px;
+    outline: none;
+}
+
+.warehouse-field input {
+    min-height: 42px;
+}
+
+.warehouse-field textarea {
+    min-height: 75px;
+    resize: vertical;
+}
+
+.warehouse-field input:focus,
+.warehouse-field textarea:focus,
+.warehouse-field select:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+/* Active checkbox */
+.warehouse-modal-status {
+    margin-top: 4px;
+    padding: 14px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background: #f9fafb;
+}
+
+.warehouse-modal-status label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    color: #374151;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.warehouse-modal-status input[type="checkbox"] {
+    width: 17px;
+    height: 17px;
+    margin: 0;
+    cursor: pointer;
+}
+
+/* Footer stays visible while scrolling */
+.warehouse-modal-footer {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 24px;
+    border-top: 1px solid #e5e7eb;
+    background: #ffffff;
+}
+
+.warehouse-cancel-btn,
+.warehouse-save-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 40px;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.warehouse-cancel-btn {
+    background: #f3f4f6;
+    color: #374151;
+}
+
+.warehouse-save-btn {
+    background: #2563eb;
+    color: #ffffff;
+}
+
+.warehouse-save-btn:hover {
+    background: #1d4ed8;
+}
+
+.warehouse-cancel-btn:disabled,
+.warehouse-save-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Mobile layout */
+@media (max-width: 600px) {
+    .warehouse-modal-overlay {
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    .warehouse-modal {
+        max-height: calc(100vh - 20px);
+        max-width: 100%;
+    }
+
+    .warehouse-modal-header {
+        padding: 16px;
+    }
+
+    .warehouse-modal-body {
+        padding: 16px;
+    }
+
+    .warehouse-modal-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .warehouse-field.full {
+        grid-column: auto;
+    }
+
+    .warehouse-modal-footer {
+        padding: 12px 16px;
+    }
+}
